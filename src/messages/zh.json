@@ -1,5 +1,5 @@
 {
-  "description": "A permissions plugin for Minecraft servers.",
+  "description": "一个基于Minecraft(Bukkit/BungeeCord)的开源基础插件",
   "close": "Close",
   "copy": "Copy",
   "wiki": "Wiki",
@@ -8,22 +8,22 @@
   "avatar": "{name}'s avatar",
   "sponsor": "Proudly sponsored by <strong>BisectHosting</strong>.<br/>Create your own Minecraft server today!",
   "links": {
-    "home": "Home",
-    "download": "Download",
+    "home": "主页",
+    "download": "下载",
     "editor": "Web Editor",
     "verbose": "Verbose Viewer",
     "tree": "Tree Viewer",
     "wiki": "Wiki",
     "tools": {
-      "name": "Tools",
+      "name": "工具与应用",
       "editor": "Editor",
       "verbose": "Verbose",
       "tree": "Tree"
     },
-    "language": "Language"
+    "language": "语言"
   },
   "home": {
-    "name": "Home",
+    "name": "主页",
     "supported": "Supports Bukkit/Spigot/Paper, BungeeCord, Sponge, Fabric, Forge, Nukkit and Velocity servers",
     "why": {
       "title": "Why LuckPerms?",

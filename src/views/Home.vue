@@ -11,12 +11,12 @@
         </div>
 
         <div v-if="!config.selfHosted" class="download">
-          <router-link to="/download">
-          <span>
+          <a href="https://github.com/FloraCore/FloraCore/releases/latest" class="resource">
+            <span>
             <font-awesome icon="arrow-alt-circle-down"/>
             {{ $t('links.download') }}
-          </span>
-          </router-link>
+            </span>
+          </a>
         </div>
       </div>
     </section>
