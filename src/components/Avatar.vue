@@ -1,9 +1,9 @@
 <template>
   <img
-    class="avatar"
-    :src="`https://crafthead.net/helm/${key}/8`"
     :alt="$t('avatar', { name })"
+    :src="`https://crafthead.net/helm/${key}/8`"
     :title="title ? $t('avatar', { name }) : ''"
+    class="avatar"
     @error="replaceWithDefault"
   />
 </template>

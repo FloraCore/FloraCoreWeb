@@ -7,7 +7,7 @@ import store from '../store';
  * @param {('getEditorData'|'getVerboseData'|'getTreeData')} type
  */
 export default async function updateSession(route, type) {
-  const { params: { id }, query, hash } = route;
+  const {params: {id}, query, hash} = route;
   const queryKeys = Object.keys(query);
   let sessionId;
 

@@ -22,7 +22,7 @@
     </div>
 
     <div v-else class="editor-container">
-      <div v-if="!loaded" class="tool-intro" key="loading">
+      <div v-if="!loaded" key="loading" class="tool-intro">
         <div>
           <img alt="LuckPerms logo" src="../assets/logo.svg">
           <div class="text">
@@ -30,8 +30,8 @@
             <p>{{ $t('editor.description') }}</p>
             <div v-if="!errors.load && !errors.unsupported">
               <p>
-                <font-awesome icon="asterisk" :spin="true" />
-                {{ $t('editor.loading' )}}
+                <font-awesome :spin="true" icon="asterisk"/>
+                {{ $t('editor.loading') }}
               </p>
             </div>
 
@@ -61,26 +61,26 @@
         </div>
       </div>
 
-      <div v-else class="editor-wrap" :key="sessionId">
+      <div v-else :key="sessionId" class="editor-wrap">
         <editor-menu
-          :sessions="sessions"
-          :current-session="currentSession"
           :class="{ active: menu }"
+          :current-session="currentSession"
+          :sessions="sessions"
           @clear-query="clearQuery"
         />
 
-          <div
-            id="editor-menu-focus"
-            class="overlay-focus"
-            v-if="menu"
-            @click="menu = !menu"
-          ></div>
+        <div
+          v-if="menu"
+          id="editor-menu-focus"
+          class="overlay-focus"
+          @click="menu = !menu"
+        ></div>
 
         <button
           id="editor-menu-toggle"
           @click="menu = !menu"
         >
-          <font-awesome icon="bars" />
+          <font-awesome icon="bars"/>
         </button>
 
         <div class="editor-main">
@@ -90,28 +90,28 @@
             </div>
             <div class="buttons">
               <div v-if="socketStatus" class="socket" title="Connected via socket">
-                <font-awesome icon="network-wired" />
+                <font-awesome icon="network-wired"/>
               </div>
               <div class="search">
                 <input
                   v-if="search.toggle"
-                  type="text"
+                  ref="searchInput"
                   v-model="search.query"
                   placeholder="Search"
-                  ref="searchInput"
+                  type="text"
                 />
                 <button @click="toggleSearch">
-                  <font-awesome v-if="search.query" icon="times" fixed-width />
-                  <font-awesome v-else icon="search" fixed-width />
+                  <font-awesome v-if="search.query" fixed-width icon="times"/>
+                  <font-awesome v-else fixed-width icon="search"/>
                 </button>
               </div>
-              <button @click="saveData" title="Save changes">
+              <button title="Save changes" @click="saveData">
                 <span v-if="saveStatus !== 'saving'">
-                  <font-awesome icon="save" fixed-width />
+                  <font-awesome fixed-width icon="save"/>
                   {{ $t(socketStatus ? 'editor.apply' : 'editor.save') }}
                 </span>
                 <span v-else>
-                  <font-awesome icon="sync-alt" fixed-width :spin="true" />
+                  <font-awesome :spin="true" fixed-width icon="sync-alt"/>
                   {{ $t('editor.saving') }}
                 </span>
               </button>
@@ -119,36 +119,36 @@
           </nav>
 
 
-            <div class="editor-no-session" v-if="!currentSession && !search.debouncedQuery">
-              <font-awesome icon="arrow-left" />
-              <h1>{{ $t('editor.groups.choose') }}</h1>
+          <div v-if="!currentSession && !search.debouncedQuery" class="editor-no-session">
+            <font-awesome icon="arrow-left"/>
+            <h1>{{ $t('editor.groups.choose') }}</h1>
+          </div>
+
+          <div
+            v-if="currentSession && !search.debouncedQuery"
+            :key="`session_${currentSession.id}`"
+            class="editor-session"
+          >
+            <div class="session-container">
+              <Header :session="currentSession" :sessionData="currentSessionData"/>
+              <Meta :session="currentSession" :sessionData="currentSessionData"/>
+              <NodeList :nodes="currentNodes"/>
             </div>
+          </div>
 
-            <div
-              class="editor-session"
-              v-if="currentSession && !search.debouncedQuery"
-              :key="`session_${currentSession.id}`"
-            >
-              <div class="session-container">
-                <Header :session="currentSession" :sessionData="currentSessionData" />
-                <Meta :session="currentSession" :sessionData="currentSessionData" />
-                <NodeList :nodes="currentNodes" />
-              </div>
-            </div>
+          <search-nodes
+            v-if="search.debouncedQuery"
+            :query="search.debouncedQuery"
+            @clear-query="clearQuery"
+          />
 
-            <search-nodes
-              v-if="search.debouncedQuery"
-              :query="search.debouncedQuery"
-              @clear-query="clearQuery"
-            />
-
-            <AddNode v-if="(currentSession && !search.debouncedQuery) || selectedNodes.length" />
+          <AddNode v-if="(currentSession && !search.debouncedQuery) || selectedNodes.length"/>
         </div>
       </div>
     </div>
 
     <transition name="fade">
-      <Modal v-if="modal && modal.type" :modal="modal" />
+      <Modal v-if="modal && modal.type" :modal="modal"/>
     </transition>
 
   </main>
@@ -281,7 +281,7 @@ export default {
       this.$store.dispatch('saveData');
     },
     async toggleSearch() {
-      const { search } = this;
+      const {search} = this;
       if (search.toggle === true) {
         search.query = '';
         search.toggle = false;
@@ -378,7 +378,7 @@ main.editor {
               font-size: 1rem;
               font-weight: bold;
               padding: .25rem .5rem;
-              border:0;
+              border: 0;
               margin-left: .5rem;
               cursor: pointer;
 
@@ -410,8 +410,8 @@ main.editor {
               width: 20rem;
               background: white;
               border: 0;
-              background: rgba(255,255,255,.85);
-              border-right: 1px solid rgba(0,0,0,.25);
+              background: rgba(255, 255, 255, .85);
+              border-right: 1px solid rgba(0, 0, 0, .25);
               font-family: "Source Code Pro", monospace;
             }
           }

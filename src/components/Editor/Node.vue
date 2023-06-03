@@ -2,73 +2,74 @@
   <div :class="{ 'permission-node': true, modified: source.modified, new: source.isNew }">
     <div
       :class="{ 'node-select': true, 'selected': isSelected }"
-      @click="toggleNodeSelect()"
       :title="$t('editor.nodes.select')"
+      @click="toggleNodeSelect()"
     >
       <span></span>
     </div>
 
     <div
       v-if="!permission.edit"
+      :title="$t('editor.nodes.edit')"
       class="permission"
       @click="permission.edit = true"
-      :title="$t('editor.nodes.edit')"
     >
       <code>{{ source.key }}</code>
     </div>
     <div v-else class="permission">
       <input
+        v-model="permission.value"
         v-autofocus
         type="text"
-        v-model="permission.value"
+        @blur="updateNode('key', permission)"
         @keydown.enter="updateNode('key', permission)"
         @keydown.tab="updateNode('key', permission)"
-        @blur="updateNode('key', permission)"
       />
     </div>
 
     <div
+      :title="$t('editor.nodes.toggle')"
       class="value"
       @click="toggleValue()"
-      :title="$t('editor.nodes.toggle')"
     >
       <code :class="{'true': source.value}">{{ source.value }}</code>
     </div>
 
     <div
       v-if="!expiry.edit"
+      :title="$t('editor.nodes.expiry')"
       class="expiry"
       @click="expiry.edit = true"
-      :title="$t('editor.nodes.expiry')"
     >
       <code v-if="source.expiry">{{ relativeExpiry }}</code>
       <code v-else disabled>{{ $t('editor.nodes.never') }}</code>
 
       <button
         v-if="source.expiry"
+        :title="$t('editor.nodes.deleteExpiry')"
         class="delete"
         @click.stop="deleteExpiry()"
-        :title="$t('editor.nodes.deleteExpiry')"
       >
-        <font-awesome icon="times" />
+        <font-awesome icon="times"/>
       </button>
     </div>
     <div v-else class="expiry">
       <datepicker
-        @closed="updateNode('expiry', expiry)"
         v-model="expiry.value"
-        :disabled-dates="{ to: new Date() }"
         :autofocus="true"
+        :disabled-dates="{ to: new Date() }"
+        @closed="updateNode('expiry', expiry)"
       />
     </div>
 
     <div
+      :title="$t('editor.nodes.contexts')"
       class="contexts"
       @click="context.ui = true"
-      :title="$t('editor.nodes.contexts')"
     >
       <span v-if="flattenedContexts.length">
-        <code v-for="(entry, index) in flattenedContexts" :key="`node_context_${entry.key}_${entry.value}_${index}`">
+        <code v-for="(entry, index) in flattenedContexts"
+              :key="`node_context_${entry.key}_${entry.value}_${index}`">
           <small>{{ entry.key }}:</small> {{ entry.value }}
         </code>
       </span>
@@ -76,21 +77,22 @@
     </div>
 
     <div class="delete" @click="deleteNode(source.id)">
-      <font-awesome icon="times" />
+      <font-awesome icon="times"/>
     </div>
 
     <transition name="fade">
-      <div v-if="context.ui" class="context-ui" v-click-outside="closeContextUi">
+      <div v-if="context.ui" v-click-outside="closeContextUi" class="context-ui">
         <h4>Contexts <span>({{ flattenedContexts.length }})</span></h4>
         <div class="close" @click="closeContextUi">
-          <font-awesome icon="times" />
+          <font-awesome icon="times"/>
         </div>
         <ul>
-          <li v-for="(entry, index) in flattenedContexts" :key="`flattened_context_${entry.key}_${entry.value}_${index}`">
+          <li v-for="(entry, index) in flattenedContexts"
+              :key="`flattened_context_${entry.key}_${entry.value}_${index}`">
             <span>{{ entry.key }}</span>
             <span>{{ entry.value }}</span>
             <button @click="removeContext(entry.key, entry.value)">
-              <font-awesome icon="times" fixed-width />
+              <font-awesome fixed-width icon="times"/>
             </button>
           </li>
           <li>
@@ -102,14 +104,14 @@
           <li>
             <div class="edit">
               <input
-                type="text"
                 v-model="context.key"
                 :placeholder="$t('editor.key')"
-                @focus="context.keyFocus = true"
+                type="text"
                 @blur="blurField('keyFocus')"
+                @focus="context.keyFocus = true"
               >
               <transition name="fade">
-                <ul class="context-list" v-if="context.keyFocus">
+                <ul v-if="context.keyFocus" class="context-list">
                   <li
                     v-for="pContext in potentialContexts"
                     :key="`potential_context_key_${pContext.key}`"
@@ -122,15 +124,15 @@
             </div>
             <div class="edit">
               <input
-                type="text"
                 v-model="context.value"
                 :placeholder="$t('editor.value')"
-                @focus="context.valueFocus = true"
+                type="text"
                 @blur="blurField('valueFocus')"
+                @focus="context.valueFocus = true"
                 @keydown.enter="addContext"
               >
               <transition name="fade">
-                <ul class="context-list" v-if="context.valueFocus">
+                <ul v-if="context.valueFocus" class="context-list">
                   <li
                     v-for="value in potentialContextValues"
                     :key="`potential_context_value_${value}`"
@@ -144,7 +146,7 @@
           </li>
         </ul>
         <button @click="addContext">
-          <font-awesome icon="plus" />
+          <font-awesome icon="plus"/>
           {{ $t('editor.nodes.addContext') }}
         </button>
       </div>
@@ -204,10 +206,10 @@ export default {
         if (Array.isArray(values)) {
           // eslint-disable-next-line no-restricted-syntax
           for (const value of values) {
-            entries.push({ key, value });
+            entries.push({key, value});
           }
         } else {
-          entries.push({ key, value: values });
+          entries.push({key, value: values});
         }
       }
       return entries;
@@ -238,20 +240,20 @@ export default {
         case 'value':
         case 'expiry':
           if (this.source[type] !== data.value) {
-            this.$store.commit('updateNode', { node: this.source, type, data });
+            this.$store.commit('updateNode', {node: this.source, type, data});
           }
           // eslint-disable-next-line no-param-reassign
           data.edit = false;
           break;
         case 'context':
-          this.$store.commit('updateNodeContext', { node: this.source, data });
+          this.$store.commit('updateNodeContext', {node: this.source, data});
           break;
         default:
           break;
       }
     },
     deleteExpiry() {
-      this.updateNode('expiry', { value: null });
+      this.updateNode('expiry', {value: null});
     },
     deleteNode(nodeId) {
       this.$store.commit('deleteNode', nodeId);
@@ -305,7 +307,7 @@ export default {
 
 <style lang="scss">
 .permission-node {
-  border-bottom: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -313,7 +315,7 @@ export default {
   position: relative;
 
   &:hover {
-    background-color: rgba(255,255,255,.1);
+    background-color: rgba(255, 255, 255, .1);
   }
 
   &.modified {
@@ -336,7 +338,7 @@ export default {
     padding: .5em 1em;
 
     &:hover {
-      background-color: rgba(255,255,255,.1);
+      background-color: rgba(255, 255, 255, .1);
     }
   }
 
@@ -420,6 +422,7 @@ export default {
     code {
       color: $red;
     }
+
     .true {
       color: $brand-color;
     }
@@ -434,7 +437,7 @@ export default {
   input {
     width: 100%;
     border: 0;
-    background: rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
     padding: .2rem .5rem;
     color: #FFF;
@@ -452,7 +455,7 @@ export default {
   z-index: 11;
   top: 50%;
   right: 3rem;
-  box-shadow: 0 0 1em rgba(0,0,0,.2);
+  box-shadow: 0 0 1em rgba(0, 0, 0, .2);
   cursor: initial;
   min-width: 25%;
 
@@ -487,8 +490,8 @@ export default {
     li {
       width: 100%;
       display: flex;
-      background: rgba(0,0,0,.1);
-      border-top: 1px solid rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, .1);
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
       font-family: 'Source Code Pro', monospace;
       font-size: .9rem;
 
@@ -496,7 +499,7 @@ export default {
         padding: .25rem 1rem;
         margin: 0;
         width: 100%;
-        background: rgba(0,0,0,.25);
+        background: rgba(0, 0, 0, .25);
         color: #FFF;
 
         span {
@@ -573,7 +576,7 @@ export default {
       cursor: pointer;
 
       &:hover {
-        background: rgba(255,255,255,.05);
+        background: rgba(255, 255, 255, .05);
       }
     }
   }

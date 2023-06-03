@@ -1,15 +1,15 @@
 <template>
-<div class="modal" @click="closeModal">
+  <div class="modal" @click="closeModal">
 
-  <div class="modal-box" @click.stop>
-    <div class="close" @click="closeModal">
-      <font-awesome icon="times-circle" />
+    <div class="modal-box" @click.stop>
+      <div class="close" @click="closeModal">
+        <font-awesome icon="times-circle"/>
+      </div>
+
+      <!--    Modals -->
+      <component :is="modal.type" :props="modal.object" @close="closeModal"/>
     </div>
-
-<!--    Modals -->
-    <component :is="modal.type" :props="modal.object" @close="closeModal" />
   </div>
-</div>
 </template>
 
 <script>
@@ -57,14 +57,14 @@ export default {
   left: 0;
   right: 0;
   z-index: 100;
-  background-color: rgba(0,0,0,0.9);
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
 
 
   .modal-box {
-    background: rgba(255,255,255,.2);
+    background: rgba(255, 255, 255, .2);
     padding: 2em;
     width: 100%;
     max-width: 600px;
@@ -120,7 +120,7 @@ export default {
         border-radius: 2px;
         width: 16em;
         padding: .2em .5em;
-        background-color: rgba(255,255,255,.75);
+        background-color: rgba(255, 255, 255, .75);
       }
     }
 

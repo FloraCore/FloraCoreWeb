@@ -45,7 +45,7 @@ code, .code {
   display: inline-block;
   font-family: 'Source Code Pro', monospace;
   padding: .2em .5em;
-  background: rgba(0,0,0,.2);
+  background: rgba(0, 0, 0, .2);
   font-size: .8em;
   border-radius: 2px;
   line-height: 1.5;
@@ -105,7 +105,7 @@ code, .code {
       font-size: 1.25rem;
     }
   }
-	
+
   &.demo-button {
     font-size: 1rem;
     padding: .5rem 1rem;
@@ -160,7 +160,7 @@ code, .code {
     border-radius: 2px;
     font-size: 1.5em;
     transition: background .2s;
-    box-shadow: 0 0 1rem rgba(0,0,0,.1);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
 
     &:not(:last-child) {
       margin-bottom: 2rem;
@@ -213,7 +213,7 @@ code, .code {
     height: 13rem;
     width: auto;
     margin-right: 2em;
-    box-shadow: 0rem 0rem 2rem rgba(0,0,0,0.1);
+    box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.1);
     border-radius: 100%;
   }
 
@@ -271,5 +271,5 @@ code, .code {
   bottom: 0;
   width: 100%;
   z-index: 50;
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, .5);
 }

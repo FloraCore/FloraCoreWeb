@@ -1,9 +1,9 @@
 <template>
-  <div class="branch" :class="node ? '' : 'no-node'">
-    <div class="node" @click="open = !open" v-if="node">
+  <div :class="node ? '' : 'no-node'" class="branch">
+    <div v-if="node" class="node" @click="open = !open">
       <div>
         <button v-if="hasChildren && node">
-          <font-awesome icon="caret-right" :rotation="open ? 90 : null" />
+          <font-awesome :rotation="open ? 90 : null" icon="caret-right"/>
         </button>
         <code>{{ node }}</code>
       </div>
@@ -14,9 +14,9 @@
     <template v-if="open && hasChildren">
       <branch
         v-for="(branch, node) in branchData"
-        :node="node"
-        :branch-data="branch"
         :key="node"
+        :branch-data="branch"
+        :node="node"
       />
     </template>
   </div>
@@ -70,41 +70,41 @@ export default {
 </script>
 
 <style lang="scss">
-  .branch {
-    padding-left: 2rem;
+.branch {
+  padding-left: 2rem;
 
-    &.no-node {
+  &.no-node {
+    padding-left: 0;
+
+    > .branch {
       padding-left: 0;
-
-      > .branch {
-        padding-left: 0;
-      }
-    }
-
-    .node {
-      background: $grey;
-      border-radius: 2px;
-      margin-bottom: .2rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-
-      &:hover {
-        background: lighten($grey, 10%);
-      }
-
-      code {
-        background: transparent;
-      }
-    }
-
-    button {
-      background: transparent;
-      color: #FFF;
-      border: 0;
-      padding: 0 .8rem;
-      cursor: pointer;
-      margin-left: .2rem;
     }
   }
+
+  .node {
+    background: $grey;
+    border-radius: 2px;
+    margin-bottom: .2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+      background: lighten($grey, 10%);
+    }
+
+    code {
+      background: transparent;
+    }
+  }
+
+  button {
+    background: transparent;
+    color: #FFF;
+    border: 0;
+    padding: 0 .8rem;
+    cursor: pointer;
+    margin-left: .2rem;
+  }
+}
 </style>

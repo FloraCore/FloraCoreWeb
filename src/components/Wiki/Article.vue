@@ -1,21 +1,21 @@
 <template>
-    <div>
-      <template v-if="article">
-        <h1>
-          <transition name="fade" mode="out-in">
+  <div>
+    <template v-if="article">
+      <h1>
+        <transition mode="out-in" name="fade">
             <span :key="title">
               {{ title }}
             </span>
-          </transition>
-        </h1>
-        <transition name="fade" mode="out-in">
-          <component :is="article" />
         </transition>
-      </template>
-      <template v-else>
-        <NotFound/>
-      </template>
-    </div>
+      </h1>
+      <transition mode="out-in" name="fade">
+        <component :is="article"/>
+      </transition>
+    </template>
+    <template v-else>
+      <NotFound/>
+    </template>
+  </div>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ import NotFound from '@/views/NotFound.vue';
 
 export default {
   metaInfo() {
-    const { title } = this;
+    const {title} = this;
     return {
       title,
     };
@@ -70,14 +70,15 @@ export default {
           if (['STRONG', 'CODE'].includes(event.target.tagName)) {
             target = event.target.parentNode;
           } else if (event.target.tagName === 'A') {
-            ({ target } = event);
+            ({target} = event);
           }
 
           if (target.href.startsWith(window.origin)) {
             this.$router.push({
               path: target.pathname,
               hash: target.hash,
-            }).then().catch(() => {});
+            }).then().catch(() => {
+            });
           } else {
             window.open(target.href);
           }

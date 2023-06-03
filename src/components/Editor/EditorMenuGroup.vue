@@ -6,11 +6,11 @@
         <small v-if="group.displayName !== group.id">{{ group.id }}</small>
       </span>
       <span v-if="isVisible">
-        <span v-if="weight" class="weight" :title="$t('editor.groups.weight')">
+        <span v-if="weight" :title="$t('editor.groups.weight')" class="weight">
           {{ weight }}
         </span>
-        <button @click="deleteGroup" :disabled="group.id === 'default'">
-          <font-awesome icon="times" fixed-width />
+        <button :disabled="group.id === 'default'" @click="deleteGroup">
+          <font-awesome fixed-width icon="times"/>
         </button>
       </span>
     </span>
@@ -66,32 +66,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .group-name {
-    max-width: 85%;
+.group-name {
+  max-width: 85%;
+}
+
+.group-display {
+  white-space: nowrap;
+  max-width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+button {
+  background: transparent;
+  color: white;
+  opacity: 0;
+  border: 0;
+  cursor: pointer;
+  padding: 0 .5rem;
+
+  &:hover {
+    opacity: 1 !important;
   }
 
-  .group-display {
-    white-space: nowrap;
-    max-width: 100%;
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  &[disabled] {
+    opacity: 0 !important;
   }
-
-  button {
-    background: transparent;
-    color: white;
-    opacity: 0;
-    border: 0;
-    cursor: pointer;
-    padding: 0 .5rem;
-
-    &:hover {
-      opacity: 1 !important;
-    }
-
-    &[disabled] {
-      opacity: 0 !important;
-    }
-  }
+}
 </style>

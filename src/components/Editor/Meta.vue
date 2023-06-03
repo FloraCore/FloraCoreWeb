@@ -1,46 +1,46 @@
 <template>
-<div class="editor-meta">
-  <div class="meta-weight" v-if="sessionData.type === 'group'">
-    <strong>{{ $t('editor.meta.weight') }}</strong>
-    <code>{{ groupWeight }}</code>
-  </div>
-  <div class="meta-parents">
-    <div class="add-group">
-      <strong>{{ $t('editor.meta.parents') }}</strong>
-      <button
-        @click="addingGroup = true"
-        :title="$t('editor.meta.add', { id: session.id })"
-      >
-        +
-      </button>
-      <ul v-if="addingGroup" v-click-outside="closeGroups">
-        <li
-          v-for="group in groups"
-          @click="addParentToGroup(group.id)"
-          :key="`addParent_${group.id}`"
+  <div class="editor-meta">
+    <div v-if="sessionData.type === 'group'" class="meta-weight">
+      <strong>{{ $t('editor.meta.weight') }}</strong>
+      <code>{{ groupWeight }}</code>
+    </div>
+    <div class="meta-parents">
+      <div class="add-group">
+        <strong>{{ $t('editor.meta.parents') }}</strong>
+        <button
+          :title="$t('editor.meta.add', { id: session.id })"
+          @click="addingGroup = true"
         >
-          {{ group.id }}
+          +
+        </button>
+        <ul v-if="addingGroup" v-click-outside="closeGroups">
+          <li
+            v-for="group in groups"
+            :key="`addParent_${group.id}`"
+            @click="addParentToGroup(group.id)"
+          >
+            {{ group.id }}
+          </li>
+        </ul>
+      </div>
+      <ul>
+        <li v-for="parent in parents" :key="`groupParent_${parent}`">
+          <code
+            :title="$t('editor.meta.gotoParent', { parent })"
+            @click="handleParentSessionSwitch(parent)"
+          >
+            {{ parent }}
+            <span
+              :title="$t('editor.meta.removeParent', { parent })"
+              @click.stop="deleteParent(parent)"
+            >
+            <font-awesome icon="times"/>
+          </span>
+          </code>
         </li>
       </ul>
     </div>
-    <ul>
-      <li v-for="parent in parents" :key="`groupParent_${parent}`">
-        <code
-          @click="handleParentSessionSwitch(parent)"
-          :title="$t('editor.meta.gotoParent', { parent })"
-        >
-          {{ parent }}
-          <span
-            @click.stop="deleteParent(parent)"
-            :title="$t('editor.meta.removeParent', { parent })"
-          >
-            <font-awesome icon="times" />
-          </span>
-        </code>
-      </li>
-    </ul>
   </div>
-</div>
 </template>
 
 <script>
@@ -64,11 +64,12 @@ export default {
 
   computed: {
     groupWeight() {
-      const { weight } = this.sessionData;
+      const {weight} = this.sessionData;
 
       if (weight.length === 0) {
         return 'N/A';
-      } if (weight.length === 1) {
+      }
+      if (weight.length === 1) {
         return weight[0].key.split('.').pop();
       }
       return 'Multiple';
@@ -112,7 +113,7 @@ export default {
 
 <style lang="scss">
 .editor-meta {
-  background-color: rgba(255,255,255,.1);
+  background-color: rgba(255, 255, 255, .1);
   padding: 0 1em 1em;
 
   > div {
@@ -167,7 +168,7 @@ export default {
         max-height: 40vh;
         overflow-y: auto;
         z-index: 100;
-        box-shadow: 0 .2rem 1rem rgba(0,0,0,.2);
+        box-shadow: 0 .2rem 1rem rgba(0, 0, 0, .2);
 
         li {
           padding: .25rem 1rem;
@@ -177,11 +178,11 @@ export default {
           cursor: pointer;
 
           &:not(:last-child) {
-            border-bottom: 1px solid rgba(0,0,0,.2);
+            border-bottom: 1px solid rgba(0, 0, 0, .2);
           }
 
           &:hover {
-            background: rgba(255,255,255,.05);
+            background: rgba(255, 255, 255, .05);
           }
         }
       }

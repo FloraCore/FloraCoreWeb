@@ -2,11 +2,11 @@
   <main class="download">
     <section class="hero">
       <div class="container">
-          <h1>{{ $t('download.title') }}</h1>
+        <h1>{{ $t('download.title') }}</h1>
         <div class="version">
           <p><span>v{{ version }}</span></p>
-          <p>{{ $t('download.build', { time: relativeTimestamp }) }}</p>
-          <font-awesome icon="asterisk" :spin="true" v-if="!version" />
+          <p>{{ $t('download.build', {time: relativeTimestamp}) }}</p>
+          <font-awesome v-if="!version" :spin="true" icon="asterisk"/>
         </div>
       </div>
     </section>
@@ -17,94 +17,94 @@
           <h2>{{ $t('download.typeChoose') }}</h2>
           <a
             :href="downloads.bukkit"
-            v-on:click="logDownload('bukkit')"
             class="resource"
+            v-on:click="logDownload('bukkit')"
           >
             <span>
-              <img src="@/assets/logos/bukkit.png" alt="Bukkit">
+              <img alt="Bukkit" src="@/assets/logos/bukkit.png">
               Bukkit
             </span>
             <small>{{ $t('download.bukkit') }}</small>
           </a>
           <a
             :href="downloads.sponge"
-            v-on:click="logDownload('sponge')"
             class="resource"
+            v-on:click="logDownload('sponge')"
           >
             <span>
-              <img src="@/assets/logos/sponge.png" alt="Sponge">
+              <img alt="Sponge" src="@/assets/logos/sponge.png">
               Sponge
             </span>
             <small>{{ $t('download.sponge') }}</small>
           </a>
           <a
             :href="downloads.fabric"
-            v-on:click="logDownload('fabric')"
             class="resource"
+            v-on:click="logDownload('fabric')"
           >
             <span>
-              <img src="@/assets/logos/fabric.png" alt="Fabric">
+              <img alt="Fabric" src="@/assets/logos/fabric.png">
               Fabric
             </span>
             <small>{{ $t('download.fabric') }}</small>
           </a>
           <a
             :href="downloads.forge"
-            v-on:click="logDownload('forge')"
             class="resource"
+            v-on:click="logDownload('forge')"
           >
             <span>
-              <img src="@/assets/logos/forge.png" alt="Forge">
+              <img alt="Forge" src="@/assets/logos/forge.png">
               Forge
             </span>
             <small>{{ $t('download.forge') }}</small>
           </a>
           <a
             :href="downloads.nukkit"
-            v-on:click="logDownload('nukkit')"
             class="resource"
+            v-on:click="logDownload('nukkit')"
           >
             <span>
-              <img src="@/assets/logos/nukkit.png" alt="Nukkit">
+              <img alt="Nukkit" src="@/assets/logos/nukkit.png">
               Nukkit
             </span>
             <small>{{ $t('download.nukkit') }}</small>
           </a>
           <a
             :href="downloads.velocity"
-            v-on:click="logDownload('velocity')"
             class="resource"
+            v-on:click="logDownload('velocity')"
           >
             <span>
-              <img src="@/assets/logos/velocity.png" alt="Velocity">
+              <img alt="Velocity" src="@/assets/logos/velocity.png">
               Velocity
             </span>
             <small>{{ $t('download.velocity') }}</small>
           </a>
           <a
             :href="downloads.bungee"
-            v-on:click="logDownload('bungee')"
             class="resource"
+            v-on:click="logDownload('bungee')"
           >
             <span>
-              <img src="@/assets/logos/bungeecord.png" alt="BungeeCord">
+              <img alt="BungeeCord" src="@/assets/logos/bungeecord.png">
               BungeeCord
             </span>
             <small>{{ $t('download.bungee') }}</small>
           </a>
           <a
             :href="downloads['bukkit-legacy']"
-            v-on:click="logDownload('bukkit-legacy')"
             class="resource"
+            v-on:click="logDownload('bukkit-legacy')"
           >
             <span>
-              <img src="@/assets/logos/bukkit.png" alt="Bukkit">
+              <img alt="Bukkit" src="@/assets/logos/bukkit.png">
               Bukkit Legacy
             </span>
             <small>{{ $t('download.bukkitLegacy') }}</small>
           </a>
           <button class="button" @click="openQuiz">
-            <font-awesome icon="question-circle" />
+            <font-awesome icon="question-circle"/>
             {{ $t('download.typeHelp') }}
           </button>
         </div>
@@ -127,9 +127,9 @@
           </ul>
           <h2>{{ $t('download.install.title') }}</h2>
           <ol>
-            <li v-html="$t('download.install.add')" />
-            <li v-html="$t('download.install.restart')" />
-            <li v-html="$t('download.install.config')" />
+            <li v-html="$t('download.install.add')"/>
+            <li v-html="$t('download.install.restart')"/>
+            <li v-html="$t('download.install.config')"/>
             <i18n path="download.install.setup" tag="li">
               <template #wiki>
                 <router-link to="wiki/Usage">
@@ -140,7 +140,7 @@
           </ol>
           <h2>{{ $t('download.trouble.title') }}</h2>
           <ul>
-            <li v-html="$t('download.trouble.console')" />
+            <li v-html="$t('download.trouble.console')"/>
             <i18n path="download.trouble.read" tag="li">
               <template #wiki>
                 <router-link to="wiki/Installation">
@@ -150,7 +150,7 @@
             </i18n>
             <i18n path="download.trouble.support" tag="li">
               <template #discord>
-                  <a href="https://discord.gg/luckperms" target="_blank">Discord</a>
+                <a href="https://discord.gg/luckperms" target="_blank">Discord</a>
               </template>
             </i18n>
           </ul>
@@ -176,11 +176,11 @@
         <div>
           <a
             :href="extensions['extension-legacy-api']"
-            v-on:click="logDownload('extension-legacy-api')"
             class="resource"
+            v-on:click="logDownload('extension-legacy-api')"
           >
             <span>
-              <font-awesome icon="arrow-alt-circle-down" />
+              <font-awesome icon="arrow-alt-circle-down"/>
               {{ $t('download.extensions.legacy') }}
             </span>
             <small>{{ $t('download.extensions.version') }}</small>
@@ -199,11 +199,11 @@
         <div>
           <a
             :href="extensions['extension-default-assignments']"
-            v-on:click="logDownload('extension-default-assignments')"
             class="resource"
+            v-on:click="logDownload('extension-default-assignments')"
           >
             <span>
-              <font-awesome icon="arrow-alt-circle-down" />
+              <font-awesome icon="arrow-alt-circle-down"/>
               {{ $t('download.extensions.defaultAssignments') }}
             </span>
             <small>{{ $t('download.extensions.version') }}</small>
@@ -216,8 +216,11 @@
                 </router-link>
               </template>
             </i18n>
-            <p>Check out the <router-link to="/wiki/Extensions#extension-default-assignments">wiki
-              section</router-link> for more information. See also
+            <p>Check out the
+              <router-link to="/wiki/Extensions#extension-default-assignments">wiki
+                section
+              </router-link>
+              for more information. See also
               <a href="/wiki/Default-Groups#configure-default-assignments">this section</a> about
               configuring default assignments.
             </p>
@@ -232,7 +235,7 @@
           <p>
             Additional plugins can provide more complex features,
             but may not be available on all platforms
-          .
+            .
           </p>
         </div>
       </div>
@@ -242,7 +245,7 @@
         <div>
           <a :href="additionalPlugins['extracontexts']" class="resource">
             <span>
-              <font-awesome icon="arrow-alt-circle-down" />
+              <font-awesome icon="arrow-alt-circle-down"/>
               ExtraContexts Plugin
             </span>
             <small>LuckPerms 5.0 and above, Bukkit only</small>
@@ -261,7 +264,7 @@
             LuckPerms adds
             <router-link to="/wiki/Placeholders#placeholders">placeholders</router-link>
             to PlaceholderAPI and MVdWPlaceholderAPI
-          .
+            .
           </p>
         </div>
       </div>
@@ -271,7 +274,7 @@
         <div>
           <a :href="placeholderExpansions['bukkit-placeholderapi']" class="resource">
             <span>
-              <font-awesome icon="arrow-alt-circle-down" />
+              <font-awesome icon="arrow-alt-circle-down"/>
               PlaceholderAPI
             </span>
             <small>LuckPerms 5.0 and above, Bukkit only</small>
@@ -289,7 +292,7 @@
         <div>
           <a :href="placeholderExpansions['bukkit-mvdw']" class="resource">
             <span>
-              <font-awesome icon="arrow-alt-circle-down" />
+              <font-awesome icon="arrow-alt-circle-down"/>
               MVdWPlaceholderAPI
             </span>
             <small>LuckPerms 5.0 and above, Bukkit only</small>
@@ -301,7 +304,7 @@
         <div>
           <a :href="placeholderExpansions['fabric-placeholderapi']" class="resource">
             <span>
-              <font-awesome icon="arrow-alt-circle-down" />
+              <font-awesome icon="arrow-alt-circle-down"/>
               Fabric PlaceholderAPI
             </span>
             <small>LuckPerms 5.0 and above, Fabric only</small>
@@ -314,7 +317,7 @@
     </div>
 
     <transition name="fade">
-      <Quiz v-if="quiz.open" :downloads="downloads" @close="quiz.open = false" />
+      <Quiz v-if="quiz.open" :downloads="downloads" @close="quiz.open = false"/>
     </transition>
   </main>
 </template>
@@ -338,24 +341,38 @@ export default {
     };
   },
   computed: {
-    extensions() { return this.$store.getters.extensions; },
-    additionalPlugins() { return this.$store.getters.additionalPlugins; },
-    placeholderExpansions() { return this.$store.getters.placeholderExpansions; },
-    downloads() { return this.$store.getters.downloads; },
-    version() { return this.$store.getters.version; },
-    versionTimestamp() { return this.$store.getters.versionTimestamp; },
+    extensions() {
+      return this.$store.getters.extensions;
+    },
+    additionalPlugins() {
+      return this.$store.getters.additionalPlugins;
+    },
+    placeholderExpansions() {
+      return this.$store.getters.placeholderExpansions;
+    },
+    downloads() {
+      return this.$store.getters.downloads;
+    },
+    version() {
+      return this.$store.getters.version;
+    },
+    versionTimestamp() {
+      return this.$store.getters.versionTimestamp;
+    },
     relativeTimestamp() {
       if (this.versionTimestamp) {
         return relativeDate(this.versionTimestamp, this.$i18n.locale, new Date().getTime(), true);
       }
       return null;
     },
-    changeLog() { return this.$store.getters.changeLog; },
+    changeLog() {
+      return this.$store.getters.changeLog;
+    },
   },
   methods: {
     logDownload(platform) {
       // eslint-disable-next-line no-undef
-      plausible('Download', { props: { type: platform } });
+      plausible('Download', {props: {type: platform}});
     },
     openQuiz() {
       this.quiz.open = true;
@@ -371,163 +388,163 @@ export default {
 </script>
 
 <style lang="scss">
-  main.download {
-    overflow-y: auto;
+main.download {
+  overflow-y: auto;
 
-    .hero {
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 4rem;
-
-        @include breakpoint($md) {
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-        }
-      }
-
-      .version {
-        line-height: 1.2;
-      }
-
-      h1 {
-        text-align: center;
-
-        @include breakpoint($md) {
-          text-align: left;
-        }
-      }
-
-      p {
-        text-align: center;
-        font-size: 1.5rem;
-        opacity: 1;
-        color: rgba(225, 255, 255, .5);
-
-        @include breakpoint($md) {
-          text-align: right;
-        }
-      }
-
-      span {
-        color: $brand_color;
-        font-weight: bold;
-        font-size: 2.2em;
-      }
-    }
-
-    .resource {
+  .hero {
+    .container {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      padding: 1.25rem 1.5rem;
+      align-items: center;
+      padding: 4rem;
 
       @include breakpoint($md) {
         flex-direction: row;
         align-items: center;
-      }
-
-      span {
-        margin: 0 1rem 0 0;
-        white-space: nowrap;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-
-      small {
-        margin-top: 1rem;
-
-        @include breakpoint($md) {
-          margin: 0;
-        }
-      }
-
-      img {
-        margin-right: .75rem;
-        width: 1.5em;
-        filter: saturate(20%);
-      }
-
-      &:hover img {
-        filter: none;
-      }
-    }
-
-    .button {
-      color: $brand-color;
-      background-color: $grey;
-
-      &:hover {
-        background: lighten($grey, 10%);
-      }
-
-      svg {
-        opacity: .5;
-        margin-right: 1rem;
-      }
-    }
-
-    .changelog {
-      list-style: none;
-      padding: 0;
-
-      li {
-        padding-bottom: .25rem;
-        margin-bottom: .25rem;
-        display: flex;
         justify-content: space-between;
-
-        &:not(:last-child) {
-          border-bottom: 1px solid rgba(255, 255, 255, .1);
-        }
-
-        > span {
-          display: flex;
-        }
-
-        .title {
-          margin: 0 1rem;
-        }
-
-        .time {
-          flex-shrink: 0;
-        }
       }
     }
 
-    .extensions,
-    .additional-plugins,
-    .placeholder-expansions {
-      &.hero {
-        .container {
-          justify-content: center;
-        }
+    .version {
+      line-height: 1.2;
+    }
 
-        h1, p {
-          text-align: center;
-        }
+    h1 {
+      text-align: center;
+
+      @include breakpoint($md) {
+        text-align: left;
+      }
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.5rem;
+      opacity: 1;
+      color: rgba(225, 255, 255, .5);
+
+      @include breakpoint($md) {
+        text-align: right;
+      }
+    }
+
+    span {
+      color: $brand_color;
+      font-weight: bold;
+      font-size: 2.2em;
+    }
+  }
+
+  .resource {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem 1.5rem;
+
+    @include breakpoint($md) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    span {
+      margin: 0 1rem 0 0;
+      white-space: nowrap;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    small {
+      margin-top: 1rem;
+
+      @include breakpoint($md) {
+        margin: 0;
+      }
+    }
+
+    img {
+      margin-right: .75rem;
+      width: 1.5em;
+      filter: saturate(20%);
+    }
+
+    &:hover img {
+      filter: none;
+    }
+  }
+
+  .button {
+    color: $brand-color;
+    background-color: $grey;
+
+    &:hover {
+      background: lighten($grey, 10%);
+    }
+
+    svg {
+      opacity: .5;
+      margin-right: 1rem;
+    }
+  }
+
+  .changelog {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding-bottom: .25rem;
+      margin-bottom: .25rem;
+      display: flex;
+      justify-content: space-between;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba(255, 255, 255, .1);
       }
 
-      .resources {
-        > div {
-          + div {
-            padding-top: 0;
+      > span {
+        display: flex;
+      }
 
-            @include breakpoint($md) {
-              padding-top: 4rem;
-            }
+      .title {
+        margin: 0 1rem;
+      }
+
+      .time {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  .extensions,
+  .additional-plugins,
+  .placeholder-expansions {
+    &.hero {
+      .container {
+        justify-content: center;
+      }
+
+      h1, p {
+        text-align: center;
+      }
+    }
+
+    .resources {
+      > div {
+        + div {
+          padding-top: 0;
+
+          @include breakpoint($md) {
+            padding-top: 4rem;
           }
         }
       }
     }
+  }
 
-    .additional-plugins {
-      section {
-        justify-content: center;
-      }
+  .additional-plugins {
+    section {
+      justify-content: center;
     }
   }
+}
 </style>

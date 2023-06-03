@@ -1,21 +1,24 @@
 <template>
-<div class="trust-prompt">
-  <h2><font-awesome icon="network-wired" /> {{ $t('editor.trust.title') }}</h2>
-  <p>
-    {{ $t('editor.trust.prompt') }}
-  </p>
+  <div class="trust-prompt">
+    <h2>
+      <font-awesome icon="network-wired"/>
+      {{ $t('editor.trust.title') }}
+    </h2>
+    <p>
+      {{ $t('editor.trust.prompt') }}
+    </p>
 
-  <div class="command">
-    <code class="command-area" @click="copyCommand" :title="$t('editor.clipboardCopy')">
-      /{{ metaData.commandAlias }} trusteditor {{ this.props.nonce }}
-    </code>
-    <span class="command-copied" v-if="commandCopied">
+    <div class="command">
+      <code :title="$t('editor.clipboardCopy')" class="command-area" @click="copyCommand">
+        /{{ metaData.commandAlias }} trusteditor {{ this.props.nonce }}
+      </code>
+      <span v-if="commandCopied" class="command-copied">
       {{ $t('editor.copied') }}
     </span>
-  </div>
+    </div>
 
-  <p v-html="$t('editor.trust.note')" />
-</div>
+    <p v-html="$t('editor.trust.note')"/>
+  </div>
 </template>
 
 <script>
@@ -48,28 +51,28 @@ export default {
 </script>
 
 <style lang="scss">
-  .trust-prompt {
-    .command-area {
-      font-size: 1.5rem;
-      cursor: pointer;
+.trust-prompt {
+  .command-area {
+    font-size: 1.5rem;
+    cursor: pointer;
 
-      &:hover {
-        opacity: .8;
-      }
-    }
-
-    .command {
-      position: relative;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-
-      .command-copied {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        display: block;
-        color: $brand-color;
-      }
+    &:hover {
+      opacity: .8;
     }
   }
+
+  .command {
+    position: relative;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+
+    .command-copied {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: block;
+      color: $brand-color;
+    }
+  }
+}
 </style>

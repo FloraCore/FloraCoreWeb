@@ -1,6 +1,6 @@
 <template>
   <main class="verbose container">
-    <div class="verbose-viewer" v-if="verboseData.status === 2">
+    <div v-if="verboseData.status === 2" class="verbose-viewer">
       <div class="col-1">
         <h1>{{ $t('verbose.title') }}</h1>
         <div class="meta-info">
@@ -66,10 +66,10 @@
         <div class="filter">
           <label for="filter">{{ $t('verbose.filter') }}</label>
           <input
-            type="text"
             id="filter"
             v-model="filter"
             :placeholder="$t('verbose.filterPlaceholder')"
+            type="text"
           >
           <div
             v-for="value in ['true', 'false', 'undefined']" :key="value"
@@ -85,12 +85,12 @@
       </div>
       <div class="col-2">
         <virtual-list
-          :data-sources="filteredNodes"
-          data-key="id"
           :data-component="Node"
+          :data-sources="filteredNodes"
+          :estimate-size="38"
           :keeps="50"
           class="data"
-          :estimate-size="38"
+          data-key="id"
         />
       </div>
     </div>
@@ -124,7 +124,7 @@
           </div>
           <template v-if="verboseData.status === 1">
             <p>
-              <font-awesome icon="asterisk" :spin="true" />
+              <font-awesome :spin="true" icon="asterisk"/>
               {{ $t('editor.loading') }}
             </p>
           </template>
@@ -169,21 +169,29 @@ export default {
     };
   },
   computed: {
-    Node() { return Node; },
-    verboseData() { return this.$store.getters.verbose; },
+    Node() {
+      return Node;
+    },
+    verboseData() {
+      return this.$store.getters.verbose;
+    },
     filteredNodes() {
-      const { data } = this.verboseData;
+      const {data} = this.verboseData;
       if (!this.filter && this.excludedResults.length === 0) return data;
       const filter = this.filter.toLowerCase();
       return data.filter(node => (
         !this.excludedResults.includes(node.result)
         && (node.permission?.toLowerCase().includes(filter)
-        || node.key?.toLowerCase().includes(filter)
-        || node.who?.identifier.toLowerCase().includes(filter))
+          || node.key?.toLowerCase().includes(filter)
+          || node.who?.identifier.toLowerCase().includes(filter))
       ));
     },
-    errors() { return this.$store.state.verbose.errors; },
-    filteredNodeCount() { return this.filteredNodes.length; },
+    errors() {
+      return this.$store.state.verbose.errors;
+    },
+    filteredNodeCount() {
+      return this.filteredNodes.length;
+    },
   },
   methods: {
     isExcluded(result) {
@@ -211,111 +219,111 @@ export default {
 </script>
 
 <style lang="scss">
-  main.verbose {
-    display: flex;
-    overflow-y: hidden;
-  }
+main.verbose {
+  display: flex;
+  overflow-y: hidden;
+}
 
-  .verbose-viewer {
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    display: flex;
+.verbose-viewer {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
 
-    > .col-1 {
-      flex: 0 0 30%;
-      background: transparent;
+  > .col-1 {
+    flex: 0 0 30%;
+    background: transparent;
+    padding: 1rem;
+
+    h1 {
+      margin: 0;
       padding: 1rem;
+      line-height: 1;
+      background: rgba(255, 255, 255, .05);
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+    }
 
-      h1 {
-        margin: 0;
-        padding: 1rem;
-        line-height: 1;
-        background: rgba(255,255,255,.05);
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
+    .meta-info {
+      background: $grey;
+      padding: 1rem;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
+
+    td:first-child {
+      width: 40%;
+    }
+
+    .filter {
+      margin-top: 1rem;
+
+      input {
+        font: inherit;
+        width: 100%;
+        background: rgba(255, 255, 255, .05);
+        color: #FFF;
+        padding: .5rem 1rem;
+        border: 0;
+        margin-top: .5rem;
       }
 
-      .meta-info {
-        background: $grey;
-        padding: 1rem;
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
-      }
+      .exclude-result {
+        padding-top: 1rem;
+        flex: 0 0 auto;
 
-      td:first-child {
-        width: 40%;
-      }
-
-      .filter {
-        margin-top: 1rem;
-
-        input {
-          font: inherit;
-          width: 100%;
-          background: rgba(255, 255, 255, .05);
-          color: #FFF;
-          padding: .5rem 1rem;
-          border: 0;
-          margin-top: .5rem;
+        span {
+          display: inline-block;
+          width: 1.5rem;
+          height: 1.5rem;
+          border: 2px solid $grey;
+          position: relative;
         }
 
-        .exclude-result {
-          padding-top: 1rem;
-          flex: 0 0 auto;
+        p {
+          display: inline;
+          bottom: 7px;
+          padding-left: 0.5rem;
+          position: relative;
+        }
 
+        &.selected {
           span {
-            display: inline-block;
-            width: 1.5rem;
-            height: 1.5rem;
-            border: 2px solid $grey;
-            position: relative;
-          }
-
-          p {
-            display: inline;
-            bottom: 7px;
-            padding-left: 0.5rem;
-            position: relative;
-          }
-
-          &.selected {
-            span {
-              &:after {
-                position: absolute;
-                display: block;
-                content: '';
-                width: 1rem;
-                height: .5rem;
-                border: 4px solid $brand-color;
-                border-top: 0;
-                border-right: 0;
-                transform: rotate(-45deg);
-              }
+            &:after {
+              position: absolute;
+              display: block;
+              content: '';
+              width: 1rem;
+              height: .5rem;
+              border: 4px solid $brand-color;
+              border-top: 0;
+              border-right: 0;
+              transform: rotate(-45deg);
             }
           }
         }
       }
     }
+  }
 
-    > .col-2 {
-      flex: 0 0 70%;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem 1rem 1rem 0;
+  > .col-2 {
+    flex: 0 0 70%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 1rem 0;
 
-      .data {
-        flex: 1;
-        overflow: auto;
-        list-style: none;
-        margin: 0;
-        padding: 0 1rem 0 0;
+    .data {
+      flex: 1;
+      overflow: auto;
+      list-style: none;
+      margin: 0;
+      padding: 0 1rem 0 0;
 
-        [role="listitem"] {
-          background: $grey;
-          border-radius: 2px;
-        }
+      [role="listitem"] {
+        background: $grey;
+        border-radius: 2px;
       }
     }
   }
+}
 </style>

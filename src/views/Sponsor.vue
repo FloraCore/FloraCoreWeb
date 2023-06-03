@@ -3,12 +3,12 @@
     <section class="hero">
       <div class="container">
         <div>
-          <img src="@/assets/logo.svg" alt="LuckPerms">
+          <img alt="LuckPerms" src="@/assets/logo.svg">
           <font-awesome-layers>
-            <font-awesome icon="heart" />
-            <font-awesome icon="heart" />
+            <font-awesome icon="heart"/>
+            <font-awesome icon="heart"/>
           </font-awesome-layers>
-          <img src="@/assets/bisect.svg" alt="BisectHosting">
+          <img alt="BisectHosting" src="@/assets/bisect.svg">
         </div>
         <h1>LuckPerms has partnered with BisectHosting!</h1>
         <p>BisectHosting are Minecraft server hosting experts, ready to help you create and host
@@ -45,7 +45,8 @@
           <h2>Why BisectHosting?</h2>
           <ul>
             <li>
-              BisectHosting is a <strong>trusted</strong> and well established hosting provider in the
+              BisectHosting is a <strong>trusted</strong> and well established hosting provider in
+              the
               community, and have already been serving many of our users for a number of years.
             </li>
             <li>
@@ -79,12 +80,12 @@
             not to love?! 💚
           </p>
           <p>
-            <font-awesome icon="arrow-circle-right" />
+            <font-awesome icon="arrow-circle-right"/>
             To get the <strong>25% off</strong> discount, all you need to do is enter the promo
             code "luck" when you checkout! 🎉
           </p>
           <p>
-            <font-awesome icon="arrow-circle-right" />
+            <font-awesome icon="arrow-circle-right"/>
             To take advantage of their <strong>2 weeks free + price-match</strong> offer, just get
             in touch with their support team and let them know you've come via us!
           </p>
@@ -102,12 +103,9 @@ export default {
     title: 'Sponsor',
   },
   data() {
-    return {
-    };
+    return {};
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
     logClick() {
       // eslint-disable-next-line no-undef
@@ -118,123 +116,123 @@ export default {
 </script>
 
 <style lang="scss">
-  main.sponsor {
-    overflow-y: auto;
+main.sponsor {
+  overflow-y: auto;
 
-    .hero {
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        > div {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        h1 {
-          margin: 0 4rem 1rem;
-          text-align: center;
-
-          + p {
-            font-size: 1.5rem;
-            width: 100%;
-            max-width: 60rem;
-            text-align: center;
-            margin-bottom: 4rem;
-            padding: 0 2rem;
-          }
-        }
-      }
-
-      img {
-        width: 8rem;
-        margin: 2rem;
-
-        @include breakpoint($md) {
-          width: 16rem;
-          margin: 4rem;
-        }
-      }
-
-      .fa-layers {
-        width: 2rem;
-
-        @include breakpoint($md) {
-          width: 8rem;
-        }
-
-        svg {
-          font-size: 2rem;
-
-          @include breakpoint($md) {
-            font-size: 4rem;
-          }
-
-          &:first-child {
-            color: red;
-            animation: pulse 1s infinite ease-out;
-          }
-
-          &:last-child {
-            color: hotpink;
-            animation: heartbeat 1s infinite ease-out;
-          }
-        }
-      }
-    }
-
-    hr {
-      border-color: $brand-color;
-      width: 12rem;
-      margin: 1rem auto 2rem;
-    }
-
-    .cta {
+  .hero {
+    .container {
       display: flex;
-      //flex-direction: column;
-      //align-items: center;
-      //padding: 4rem;
+      flex-direction: column;
+      align-items: center;
 
-      a {
-        background: $brand-color;
-        color: black;
-        padding: .5rem 2rem;
-        text-decoration: none;
+      > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        margin: 0 4rem 1rem;
+        text-align: center;
+
+        + p {
+          font-size: 1.5rem;
+          width: 100%;
+          max-width: 60rem;
+          text-align: center;
+          margin-bottom: 4rem;
+          padding: 0 2rem;
+        }
+      }
+    }
+
+    img {
+      width: 8rem;
+      margin: 2rem;
+
+      @include breakpoint($md) {
+        width: 16rem;
+        margin: 4rem;
+      }
+    }
+
+    .fa-layers {
+      width: 2rem;
+
+      @include breakpoint($md) {
+        width: 8rem;
+      }
+
+      svg {
         font-size: 2rem;
-        font-weight: bold;
-        margin: 2rem 0;
-        text-align: center;
+
+        @include breakpoint($md) {
+          font-size: 4rem;
+        }
+
+        &:first-child {
+          color: red;
+          animation: pulse 1s infinite ease-out;
+        }
+
+        &:last-child {
+          color: hotpink;
+          animation: heartbeat 1s infinite ease-out;
+        }
       }
-
-      p {
-        font-size: 1.5rem;
-        width: 100%;
-        max-width: 44rem;
-        text-align: center;
-        padding: 0 2rem;
-      }
     }
   }
 
-  @keyframes heartbeat {
-    0% {
-      transform: scale(1);
-    }
-    20% {
-      transform: scale(1.2);
-    }
+  hr {
+    border-color: $brand-color;
+    width: 12rem;
+    margin: 1rem auto 2rem;
   }
 
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: .5;
+  .cta {
+    display: flex;
+    //flex-direction: column;
+    //align-items: center;
+    //padding: 4rem;
+
+    a {
+      background: $brand-color;
+      color: black;
+      padding: .5rem 2rem;
+      text-decoration: none;
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 2rem 0;
+      text-align: center;
     }
-    100% {
-      transform: scale(2.5);
-      opacity: 0;
+
+    p {
+      font-size: 1.5rem;
+      width: 100%;
+      max-width: 44rem;
+      text-align: center;
+      padding: 0 2rem;
     }
   }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: .5;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
 </style>

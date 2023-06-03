@@ -1,6 +1,6 @@
 <template>
   <main class="tree container">
-    <div class="tree-viewer" v-if="metaData">
+    <div v-if="metaData" class="tree-viewer">
       <div class="col-1">
         <h1>{{ $t('tree.title') }}</h1>
         <div class="meta-info">
@@ -45,11 +45,11 @@
           </table>
         </div>
         <button @click="expandTree">
-          <font-awesome icon="plus-square" />
+          <font-awesome icon="plus-square"/>
           {{ $t('tree.expand') }}
         </button>
         <button @click="collapseTree">
-          <font-awesome icon="minus-square" />
+          <font-awesome icon="minus-square"/>
           {{ $t('tree.collapse') }}
         </button>
       </div>
@@ -57,9 +57,9 @@
         <div>
           <branch
             v-for="(branch, node) in treeData"
+            :key="node"
             :branch-data="branch"
             :node="node"
-            :key="node"
           />
         </div>
       </div>
@@ -127,7 +127,7 @@ export default {
   },
   computed: {
     treeData() {
-      const { tree } = this.$store.getters;
+      const {tree} = this.$store.getters;
 
       if (tree.data?.tree) {
         return tree.data.tree;
@@ -137,7 +137,9 @@ export default {
     metaData() {
       return this.$store.state.tree?.metadata;
     },
-    errors() { return this.$store.state.tree.errors; },
+    errors() {
+      return this.$store.state.tree.errors;
+    },
   },
   created() {
     if (this.treeData?.sessionId) return;
@@ -160,74 +162,74 @@ export default {
 </script>
 
 <style lang="scss">
-  main.tree {
-    display: flex;
-    overflow-y: hidden;
-  }
+main.tree {
+  display: flex;
+  overflow-y: hidden;
+}
 
-  .tree-viewer {
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    display: flex;
+.tree-viewer {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
 
-    > .col-1 {
-      flex: 0 0 30%;
-      background: transparent;
+  > .col-1 {
+    flex: 0 0 30%;
+    background: transparent;
+    padding: 1rem;
+
+    h1 {
+      margin: 0;
       padding: 1rem;
-
-      h1 {
-        margin: 0;
-        padding: 1rem;
-        line-height: 1;
-        background: rgba(255,255,255,.05);
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-      }
-
-      .meta-info {
-        background: $grey;
-        padding: 1rem;
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
-      }
-
-      td:first-child {
-        width: 40%;
-      }
-
-      button {
-        background: rgba(0,0,0,.2);
-        font: inherit;
-        color: $brand-color;
-        padding: .5rem 1rem;
-        border: 0;
-        margin-top: 1rem;
-        margin-right: 1rem;
-        cursor: pointer;
-
-        svg {
-          opacity: .5;
-          margin-right: .5rem;
-          color: #FFF;
-        }
-      }
+      line-height: 1;
+      background: rgba(255, 255, 255, .05);
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
     }
 
-    > .col-2 {
-      flex: 0 0 70%;
-      display: flex;
-      padding: 1rem 1rem 1rem 0;
+    .meta-info {
+      background: $grey;
+      padding: 1rem;
+      border-bottom-left-radius: 2px;
+      border-bottom-right-radius: 2px;
+    }
 
-      > div {
-        width: 100%;
-        overflow: auto;
-        padding-right: 1rem;
+    td:first-child {
+      width: 40%;
+    }
 
-        > .branch {
-          padding-left: 0;
-        }
+    button {
+      background: rgba(0, 0, 0, .2);
+      font: inherit;
+      color: $brand-color;
+      padding: .5rem 1rem;
+      border: 0;
+      margin-top: 1rem;
+      margin-right: 1rem;
+      cursor: pointer;
+
+      svg {
+        opacity: .5;
+        margin-right: .5rem;
+        color: #FFF;
       }
     }
   }
+
+  > .col-2 {
+    flex: 0 0 70%;
+    display: flex;
+    padding: 1rem 1rem 1rem 0;
+
+    > div {
+      width: 100%;
+      overflow: auto;
+      padding-right: 1rem;
+
+      > .branch {
+        padding-left: 0;
+      }
+    }
+  }
+}
 </style>

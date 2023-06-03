@@ -1,18 +1,18 @@
 <template>
-<div class="editor-header">
-  <h1>
-    <small>{{sessionData.type}}:</small>
-    <code>{{session.displayName}}</code>
-    <span v-if="sessionData.type == 'group' && session.displayName !== session.id">
+  <div class="editor-header">
+    <h1>
+      <small>{{ sessionData.type }}:</small>
+      <code>{{ session.displayName }}</code>
+      <span v-if="sessionData.type == 'group' && session.displayName !== session.id">
       {{ session.id }}
     </span>
-    <avatar
-      v-if="sessionData.type == 'user'"
-      :id="session.id"
-      :name="session.displayName"
-    />
-  </h1>
-</div>
+      <avatar
+        v-if="sessionData.type == 'user'"
+        :id="session.id"
+        :name="session.displayName"
+      />
+    </h1>
+  </div>
 </template>
 
 <script>
@@ -28,15 +28,13 @@ export default {
     sessionData: Object,
   },
 
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
 <style lang="scss">
 .editor-header {
-  background-color: rgb(44,44,57);
+  background-color: rgb(44, 44, 57);
   padding: 1em;
   position: sticky;
   top: 0;

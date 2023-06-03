@@ -1,4 +1,4 @@
-const { gitDescribeSync } = require('git-describe');
+const {gitDescribeSync} = require('git-describe');
 const hljs = require('highlight.js/lib/core');
 const config = require('./config.json');
 
@@ -20,6 +20,7 @@ function registerHljsLanguages() {
     }
   }
 }
+
 /* eslint-enable no-restricted-syntax, import/no-dynamic-require, global-require */
 
 module.exports = {
@@ -58,7 +59,7 @@ module.exports = {
           // eslint-disable-next-line global-require
           require('markdown-it-emoji'),
           // eslint-disable-next-line global-require
-          [require('markdown-it-highlightjs'), { hljs }],
+          [require('markdown-it-highlightjs'), {hljs}],
         ],
       });
   },

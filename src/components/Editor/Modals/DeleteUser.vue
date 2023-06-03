@@ -1,27 +1,27 @@
 <template>
-<div class="delete-user">
-  <i18n path="editor.users.delete" tag="h2">
-    <template #user>
-      <code class="username">
-        <avatar :id="user.id" :name="user.displayName" />
-        {{ user.displayName }}
-      </code>
-    </template>
-  </i18n>
-  <p class="lighter">
-    {{ $t('editor.users.deleteConfirm', { count: permissions.length }) }}
-  </p>
-  <div>
-    <button type="button" @click="deleteUser">
-      <font-awesome icon="check" />
-      {{ $t('editor.delete') }}
-    </button>
-    <button type="button" class="red" @click="$emit('close')">
-      <font-awesome icon="times" />
-      {{ $t('editor.cancel') }}
-    </button>
+  <div class="delete-user">
+    <i18n path="editor.users.delete" tag="h2">
+      <template #user>
+        <code class="username">
+          <avatar :id="user.id" :name="user.displayName"/>
+          {{ user.displayName }}
+        </code>
+      </template>
+    </i18n>
+    <p class="lighter">
+      {{ $t('editor.users.deleteConfirm', {count: permissions.length}) }}
+    </p>
+    <div>
+      <button type="button" @click="deleteUser">
+        <font-awesome icon="check"/>
+        {{ $t('editor.delete') }}
+      </button>
+      <button class="red" type="button" @click="$emit('close')">
+        <font-awesome icon="times"/>
+        {{ $t('editor.cancel') }}
+      </button>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -40,7 +40,7 @@ export default {
       return this.$store.getters.allNodes.filter(node => node.sessionId === this.props.userId);
     },
     user() {
-      return this.$store.getters.sessionSet.find(({ id }) => id === this.props.userId);
+      return this.$store.getters.sessionSet.find(({id}) => id === this.props.userId);
     },
   },
   methods: {
@@ -53,22 +53,22 @@ export default {
 </script>
 
 <style lang="scss">
-  .delete-user {
-    > div {
-      display: flex;
-    }
-
-    .username {
-      display: flex;
-      width: fit-content;
-      align-items: center;
-      margin-top: .5rem;
-    }
-
-    img {
-      height: 1.5rem;
-      width: auto;
-      margin-right: .5rem;
-    }
+.delete-user {
+  > div {
+    display: flex;
   }
+
+  .username {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin-top: .5rem;
+  }
+
+  img {
+    height: 1.5rem;
+    width: auto;
+    margin-right: .5rem;
+  }
+}
 </style>

@@ -2,16 +2,16 @@
   <div id="app">
     <nav id="nav">
       <div>
-        <router-link to="/" class="logo">
+        <router-link class="logo" to="/">
           <img alt="LuckPerms logo" src="@/assets/logo.svg">
           <span>LuckPerms</span>
         </router-link>
         <transition name="fade">
           <div v-if="!config.selfHosted && !isSponsorRoute" class="nav-message">
             <router-link to="/sponsor">
-              <hr />
-              <img src="@/assets/bisect.svg" alt="Bisect Hosting">
-              <span v-html="$t('sponsor')" />
+              <hr/>
+              <img alt="Bisect Hosting" src="@/assets/bisect.svg">
+              <span v-html="$t('sponsor')"/>
             </router-link>
           </div>
         </transition>
@@ -20,45 +20,45 @@
       <ul :class="{ active: menu, 'top-level': true }">
         <li>
           <router-link to="/">
-            <font-awesome icon="home" fixed-width />
+            <font-awesome fixed-width icon="home"/>
             {{ $t('links.home') }}
           </router-link>
         </li>
         <template v-if="!config.selfHosted">
           <li>
             <router-link to="/download">
-              <font-awesome icon="arrow-alt-circle-down" fixed-width />
+              <font-awesome fixed-width icon="arrow-alt-circle-down"/>
               {{ $t('links.download') }}
             </router-link>
           </li>
           <li class="overlap">
             <router-link to="/wiki">
-              <font-awesome icon="book" fixed-width />
+              <font-awesome fixed-width icon="book"/>
               {{ $t('wiki') }}
             </router-link>
           </li>
         </template>
         <li>
           <span :class="{ 'router-link-active': isToolsRoute, tools: true }">
-            <font-awesome icon="tools" fixed-width />
+            <font-awesome fixed-width icon="tools"/>
             {{ $t('links.tools.name') }}
           </span>
           <ul>
             <li>
               <router-link to="/editor">
-                <font-awesome icon="edit" fixed-width />
+                <font-awesome fixed-width icon="edit"/>
                 {{ $t('links.tools.editor') }}
               </router-link>
             </li>
             <li>
               <router-link to="/verbose">
-                <font-awesome icon="comment-alt" fixed-width />
+                <font-awesome fixed-width icon="comment-alt"/>
                 {{ $t('links.tools.verbose') }}
               </router-link>
             </li>
             <li>
               <router-link to="/treeview">
-                <font-awesome icon="sitemap" fixed-width />
+                <font-awesome fixed-width icon="sitemap"/>
                 {{ $t('links.tools.tree') }}
               </router-link>
             </li>
@@ -66,31 +66,31 @@
         </li>
         <template v-if="!config.selfHosted">
           <li class="external overlap">
-            <a href="https://github.com/LuckPerms/LuckPerms" target="_blank" class="github">
-              <font-awesome :icon="['fab', 'github']" fixed-width />
+            <a class="github" href="https://github.com/LuckPerms/LuckPerms" target="_blank">
+              <font-awesome :icon="['fab', 'github']" fixed-width/>
               <span>GitHub</span>
             </a>
           </li>
           <li class="external">
-            <a href="https://discord.gg/luckperms" target="_blank" class="discord">
-              <font-awesome :icon="['fab', 'discord']" fixed-width />
+            <a class="discord" href="https://discord.gg/luckperms" target="_blank">
+              <font-awesome :icon="['fab', 'discord']" fixed-width/>
               <span>Discord</span>
             </a>
           </li>
         </template>
         <li v-if="locale" @click="localeMenu = !localeMenu">
           <span class="locale">
-            <font-awesome icon="language" fixed-width />
+            <font-awesome fixed-width icon="language"/>
             <span class="locale-label">{{ $t('links.language') }}</span>
           </span>
           <ul :class="['locale-menu', { open: !!localeMenu }]">
             <li
               v-for="l in locales"
-              :key="l.code" @click="setLocale(l.code)"
-              :class="[{selected: l === locale}]"
+              :key="l.code" :class="[{selected: l === locale}]"
+              @click="setLocale(l.code)"
             >
               <span>
-                <span :class="['fi', 'fi-' + l.countryCode]" :alt="l.name" /> {{ l.name }}
+                <span :alt="l.name" :class="['fi', 'fi-' + l.countryCode]"/> {{ l.name }}
               </span>
             </li>
           </ul>
@@ -101,20 +101,20 @@
         id="nav-menu-toggle"
         @click="menu = !menu"
       >
-        <font-awesome icon="bars" />
+        <font-awesome icon="bars"/>
       </button>
 
       <transition name="fade">
         <div
+          v-if="menu"
           id="nav-focus"
           class="overlay-focus"
-          v-if="menu"
           @click="menu = !menu"
         ></div>
       </transition>
     </nav>
 
-    <transition name="fade" mode="out-in">
+    <transition mode="out-in" name="fade">
       <router-view/>
     </transition>
 
@@ -122,13 +122,14 @@
       <div class="footer">
         <ul>
           <li>
-            <font-awesome icon="code-branch" fixed-width />
+            <font-awesome fixed-width icon="code-branch"/>
             <a href="https://github.com/LuckPerms/LuckPermsWeb" target="_blank">LuckPermsWeb</a>
             @
-            <a :href="'https://github.com/LuckPerms/LuckPermsWeb/commit/' + commitHash" target="_blank">{{ commitHash }}</a>
+            <a :href="'https://github.com/LuckPerms/LuckPermsWeb/commit/' + commitHash"
+               target="_blank">{{ commitHash }}</a>
           </li>
           <li>
-            <router-link v-if="!config.selfHosted" to="/wiki/Credits" target="_blank">
+            <router-link v-if="!config.selfHosted" target="_blank" to="/wiki/Credits">
               Copyright © 2017-{{ new Date().getFullYear().toString() }} LuckPerms contributors
             </router-link>
             <a v-else href="https://luckperms.net/wiki/Credits" target="_blank">
@@ -247,7 +248,7 @@ input:focus {
 
   &-track {
     background: rgb(10, 10, 24);
-    border-left: 1px solid rgba(255,255,255,.1);
+    border-left: 1px solid rgba(255, 255, 255, .1);
   }
 
   &-thumb {
@@ -300,7 +301,7 @@ body {
     font-size: .9em;
     flex: 0 0 auto;
     height: 2rem;
-    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 
     svg {
       color: #95b556;
@@ -336,7 +337,7 @@ body {
 #nav {
   padding: .5rem;
   z-index: 100;
-  box-shadow: 0 0 0.5rem rgba(0,0,0,.25);
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, .25);
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -363,7 +364,7 @@ body {
     font-weight: bold;
 
     &:hover {
-      background: rgba(255,255,255,.1);
+      background: rgba(255, 255, 255, .1);
     }
 
     img {
@@ -383,7 +384,7 @@ body {
     max-width: 25rem;
     font-size: .9rem;
     line-height: 1.2;
-    color: rgba(255,255,255,.66);
+    color: rgba(255, 255, 255, .66);
     transition: all .2s;
 
     .new {
@@ -404,7 +405,7 @@ body {
     }
 
     &:hover {
-      color: rgba(255,255,255,.8);
+      color: rgba(255, 255, 255, .8);
     }
   }
 
@@ -467,7 +468,7 @@ body {
       }
 
       &:hover {
-        background: rgba(255,255,255,.1);
+        background: rgba(255, 255, 255, .1);
       }
 
       a, span {
@@ -530,7 +531,7 @@ body {
             }
 
             &.selected {
-              background: rgba(255,255,255,.1);;
+              background: rgba(255, 255, 255, .1);;
             }
           }
 
@@ -585,11 +586,11 @@ body {
           min-width: 100%;
           background: $grey;
           z-index: 100;
-          box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
+          box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
 
           li {
             &:hover {
-              background: rgba(255,255,255,.1);
+              background: rgba(255, 255, 255, .1);
             }
           }
 
@@ -650,7 +651,7 @@ body {
   .vdp-datepicker__calendar {
     background: $grey;
     border: 0;
-    box-shadow: 0 0 1em rgba(0,0,0,.2);
+    box-shadow: 0 0 1em rgba(0, 0, 0, .2);
 
     header {
       span {
@@ -667,7 +668,7 @@ body {
         }
 
         &:not(.disabled):hover {
-          background: rgba(255,255,255,.2);
+          background: rgba(255, 255, 255, .2);
         }
       }
     }

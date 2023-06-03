@@ -3,8 +3,8 @@
     <div class="select-all">
       <div
         :class="{ 'node-select-all': true, 'selected': allResultsSelected }"
-        @click="selectAllResults()"
         :title="$t('editor.nodes.selectAll')"
+        @click="selectAllResults()"
       >
         <span></span>
         Select all
@@ -15,8 +15,8 @@
         <h2>
           <div
             :class="{ 'node-select-all': true, 'selected': allGroupSelected(group) }"
-            @click="selectAllGroup(group)"
             :title="$t('editor.nodes.selectAll')"
+            @click="selectAllGroup(group)"
           >
             <span></span>
           </div>
@@ -33,7 +33,7 @@
         </h2>
         <ul>
           <li v-for="node in group.nodes" :key="`search_node_${node.id}`">
-            <node :source="node" />
+            <node :source="node"/>
           </li>
         </ul>
       </li>
@@ -68,7 +68,7 @@ export default {
   },
   computed: {
     results() {
-      const { allNodes } = this.$store.getters;
+      const {allNodes} = this.$store.getters;
 
       return allNodes.filter((node) => {
         const query = this.debouncedQuery;
@@ -88,7 +88,8 @@ export default {
         const contextValue = contextKeys.some((key) => {
           if (typeof node.context[key] === 'string') {
             return String(node.context[key]).toLowerCase().includes(query);
-          } if (Array.isArray(node.context[key])) {
+          }
+          if (Array.isArray(node.context[key])) {
             return node.context[key].some(value => String(value).toLowerCase().includes(query));
           }
           return false;
@@ -97,18 +98,18 @@ export default {
       });
     },
     groupedResults() {
-      const { results } = this;
-      const { sessionSet } = this.$store.getters;
+      const {results} = this;
+      const {sessionSet} = this.$store.getters;
       const filteredSessionSet = new Set();
 
-      results.forEach(({ sessionId }) => {
+      results.forEach(({sessionId}) => {
         filteredSessionSet.add(sessionId);
       });
 
       const sessionArray = Array.from(filteredSessionSet);
 
       return sessionArray.map(sessionId => ({
-        session: sessionSet.find(({ id }) => sessionId === id),
+        session: sessionSet.find(({id}) => sessionId === id),
         nodes: results.filter(node => node.sessionId === sessionId),
       }));
     },
@@ -176,7 +177,7 @@ export default {
       display: block;
       width: 1.5rem;
       height: 1.5rem;
-      border: 2px solid rgba(255,255,255,.5);
+      border: 2px solid rgba(255, 255, 255, .5);
       position: relative;
     }
 
@@ -218,7 +219,7 @@ export default {
     padding: .75rem 1rem;
     line-height: 1;
     margin: 0;
-    background: rgba(255,255,255,.1);
+    background: rgba(255, 255, 255, .1);
 
     small {
       display: inline-block;
@@ -252,7 +253,7 @@ export default {
     margin: 0;
 
     ul {
-      background-color: rgba(255,255,255,.2);
+      background-color: rgba(255, 255, 255, .2);
       margin: 0 0 1rem;
     }
   }

@@ -13,13 +13,13 @@
       <span class="permission">
         <code>{{ source.permission || `meta: ${source.key}` }}</code>
       </span>
-      <span class="value" :class="source.result">
+      <span :class="source.result" class="value">
         <code :class="source.result">{{ source.result }}</code>
-        <font-awesome :icon="valueIcon" fixed-width />
+        <font-awesome :icon="valueIcon" fixed-width/>
       </span>
     </div>
     <transition name="slide">
-      <div class="stack" v-if="open">
+      <div v-if="open" class="stack">
         <div class="col-1">
           <table>
             <tr v-if="source.context.length">
@@ -96,97 +96,97 @@ export default {
 </script>
 
 <style lang="scss">
-  .verbose-viewer {
-    .node {
-      margin-bottom: .25rem;
+.verbose-viewer {
+  .node {
+    margin-bottom: .25rem;
 
-      &:focus {
-        outline: 1px $brand-color solid;
+    &:focus {
+      outline: 1px $brand-color solid;
+    }
+
+    .main {
+      padding: .25rem 1rem;
+      display: flex;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(255, 255, 255, .1);
+      }
+    }
+
+    .name {
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      min-width: 10rem;
+
+      img {
+        width: 1rem;
+        margin-right: .5rem;
+      }
+    }
+
+    .permission {
+      flex: 1;
+    }
+
+    .value {
+      &.true {
+        color: $brand-color;
       }
 
-      .main {
-        padding: .25rem 1rem;
-        display: flex;
-        cursor: pointer;
-
-        &:hover {
-          background: rgba(255,255,255,.1);
-        }
+      &.false {
+        color: tomato;
       }
 
-      .name {
-        margin-right: 1rem;
-        display: flex;
-        align-items: center;
-        min-width: 10rem;
-
-        img {
-          width: 1rem;
-          margin-right: .5rem;
-        }
+      &.undefined,
+      &.null {
+        color: grey;
       }
 
-      .permission {
-        flex: 1;
+      svg {
+        margin-left: 1rem;
       }
 
-      .value {
-        &.true {
-          color: $brand-color;
-        }
-
-        &.false {
-          color: tomato;
-        }
-
-        &.undefined,
-        &.null {
-          color: grey;
-        }
-
+      &.null {
         svg {
-          margin-left: 1rem;
-        }
-
-        &.null {
-          svg {
-            opacity: 0;
-          }
-        }
-      }
-
-      .stack {
-        background: rgba(0,0,0,.2);
-        padding: .5rem 1rem;
-        display: flex;
-        white-space: normal;
-
-        .col-1 {
-          flex: 1;
-        }
-
-        .col-2 {
-          display: flex;
-          flex-direction: column;
-          flex: 2;
-        }
-
-        table {
-          td:first-child {
-            width: 25%;
-          }
-        }
-
-        code {
-          word-break: break-all;
-        }
-
-        ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
+          opacity: 0;
         }
       }
     }
+
+    .stack {
+      background: rgba(0, 0, 0, .2);
+      padding: .5rem 1rem;
+      display: flex;
+      white-space: normal;
+
+      .col-1 {
+        flex: 1;
+      }
+
+      .col-2 {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+      }
+
+      table {
+        td:first-child {
+          width: 25%;
+        }
+      }
+
+      code {
+        word-break: break-all;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+    }
   }
+}
 </style>

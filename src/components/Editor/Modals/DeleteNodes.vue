@@ -9,7 +9,7 @@
       </div>
       <div>
         <button @click="deleteNodes">
-          <font-awesome icon="times" />
+          <font-awesome icon="times"/>
           {{ $t('editor.delete') }}
         </button>
       </div>
@@ -41,27 +41,27 @@ export default {
 </script>
 
 <style lang="scss">
-  .delete-nodes-modal {
-    .col-2 {
+.delete-nodes-modal {
+  .col-2 {
+    display: flex;
+
+    > div:nth-child(1) {
+      flex: 1;
+    }
+
+    > div:nth-child(2) {
+      flex: 1;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 2rem;
 
-      > div:nth-child(1) {
-        flex: 1;
-      }
-
-      > div:nth-child(2) {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-left: 2rem;
-
-        button {
-          font-size: 1.5rem;
-          padding: 1rem 2rem;
-          background: $red;
-        }
+      button {
+        font-size: 1.5rem;
+        padding: 1rem 2rem;
+        background: $red;
       }
     }
   }
+}
 </style>

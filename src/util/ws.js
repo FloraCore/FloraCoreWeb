@@ -59,7 +59,7 @@ class SocketInterface {
    * @param frame the message frame
    */
   async onReceive(frame) {
-    const { msg: encodedMessage, signature } = frame;
+    const {msg: encodedMessage, signature} = frame;
     if (!encodedMessage || !signature) {
       return;
     }
@@ -139,12 +139,12 @@ function initConnection(socket, sessionId, encodedPublicKey, callbacks) {
         }
 
         startKeepalive(socket);
-        callbacks.connect({ socket });
+        callbacks.connect({socket});
         return STOP_LISTENING;
       }
 
       if (msg.state === 'untrusted') {
-        callbacks.trust({ nonce });
+        callbacks.trust({nonce});
         return KEEP_LISTENING;
       }
 
@@ -172,7 +172,7 @@ function initConnection(socket, sessionId, encodedPublicKey, callbacks) {
   // add a listener to await a reply
   socket.registerListener(onMessage);
 
-  const { browser, os } = Bowser.parse(window.navigator.userAgent);
+  const {browser, os} = Bowser.parse(window.navigator.userAgent);
 
   // send our public key once the socket is connected
   socket.send({
@@ -301,7 +301,7 @@ async function exportKey(format, key, storageKey) {
 }
 
 async function generateKeys() {
-  const { publicKey, privateKey } = await crypto.subtle.generateKey({
+  const {publicKey, privateKey} = await crypto.subtle.generateKey({
     name: 'RSASSA-PKCS1-v1_5',
     modulusLength: 4096,
     publicExponent: new Uint8Array([1, 0, 1]),

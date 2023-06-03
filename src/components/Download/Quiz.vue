@@ -5,7 +5,7 @@
         <font-awesome icon="times"/>
         {{ $t('close') }}
       </button>
-      <transition name="fade" mode="out-in">
+      <transition mode="out-in" name="fade">
         <div v-if="page === 1" class="page page-1">
           <h1>{{ $t('quiz.choose') }}</h1>
           <ul class="options">
@@ -15,96 +15,96 @@
         </div>
       </transition>
 
-      <transition name="fade" mode="out-in">
+      <transition mode="out-in" name="fade">
         <div v-if="page === 2" class="page page-2">
           <h1>{{ $t('quiz.type') }}</h1>
-          <ul class="options" v-if="options.single">
+          <ul v-if="options.single" class="options">
             <li @click="proceed(3, 'bukkit')">CraftBukkit / Spigot / Paper</li>
             <li @click="proceed(3, 'sponge')">SpongeForge / SpongeVanilla</li>
             <li @click="proceed(3, 'nukkit')">NukkitX</li>
           </ul>
-          <p class="lighter" v-if="options.network">
+          <p v-if="options.network" class="lighter">
             {{ $t('quiz.note') }}
           </p>
-          <ul class="options" v-if="options.network">
+          <ul v-if="options.network" class="options">
             <li @click="proceed(5, 'bungee')">BungeeCord / Waterfall / Travertine</li>
             <li @click="proceed(5, 'velocity')">Velocity</li>
           </ul>
         </div>
       </transition>
 
-      <transition name="fade" mode="out-in">
+      <transition mode="out-in" name="fade">
         <div v-if="page === 3" class="page page-3">
-          <h1>{{ $t('quiz.version', { serverType }) }}</h1>
-          <ul class="options" v-if="options.bukkit">
-            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', { version: '1.8.8' }) }}</li>
+          <h1>{{ $t('quiz.version', {serverType}) }}</h1>
+          <ul v-if="options.bukkit" class="options">
+            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', {version: '1.8.8'}) }}</li>
             <li @click="proceed(4, 'unsupported')">1.8 - 1.8.7</li>
             <li @click="proceed(4, 'legacy')">1.7.10</li>
-            <li @click="proceed(4, 'unsupported')">{{ $t('quiz.older', { version: '1.7.9' }) }}</li>
+            <li @click="proceed(4, 'unsupported')">{{ $t('quiz.older', {version: '1.7.9'}) }}</li>
           </ul>
-          <ul class="options" v-if="options.sponge">
+          <ul v-if="options.sponge" class="options">
             <li @click="proceed(4, 'latest')">
-              {{ $t('quiz.newer', { version: 'SpongeAPI 5' }) }}
+              {{ $t('quiz.newer', {version: 'SpongeAPI 5'}) }}
             </li>
             <li @click="proceed(4, 'unsupported')">
-              {{ $t('quiz.older', { version: 'SpongeAPI 4' }) }}
+              {{ $t('quiz.older', {version: 'SpongeAPI 4'}) }}
             </li>
           </ul>
-          <ul class="options" v-if="options.nukkit">
-            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', { version: 'b93' }) }}</li>
-            <li @click="proceed(4, 'unsupported')">{{ $t('quiz.newer', { version: 'b92' }) }}</li>
+          <ul v-if="options.nukkit" class="options">
+            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', {version: 'b93'}) }}</li>
+            <li @click="proceed(4, 'unsupported')">{{ $t('quiz.newer', {version: 'b92'}) }}</li>
           </ul>
         </div>
       </transition>
 
-      <transition name="fade" mode="out-in">
+      <transition mode="out-in" name="fade">
         <div v-if="page === 4" class="page page-4">
           <template v-if="options.latest">
             <img alt="LuckPerms logo" src="@/assets/logo.svg">
-            <h1>{{ $t('quiz.result', { serverType }) }}</h1>
+            <h1>{{ $t('quiz.result', {serverType}) }}</h1>
             <div class="options">
-              <a :href="downloads.bukkit" v-if="options.bukkit" download>
+              <a v-if="options.bukkit" :href="downloads.bukkit" download>
                 {{ $t('links.download') }}
               </a>
-              <a :href="downloads.sponge" v-if="options.sponge" download>
+              <a v-if="options.sponge" :href="downloads.sponge" download>
                 {{ $t('links.download') }}
               </a>
-              <a :href="downloads.nukkit" v-if="options.nukkit" download>
+              <a v-if="options.nukkit" :href="downloads.nukkit" download>
                 {{ $t('links.download') }}
               </a>
-              <a :href="downloads.bungee" v-if="options.bungee" download>
+              <a v-if="options.bungee" :href="downloads.bungee" download>
                 {{ $t('links.download') }}
               </a>
-              <a :href="downloads.velocity" v-if="options.velocity" download>
+              <a v-if="options.velocity" :href="downloads.velocity" download>
                 {{ $t('links.download') }}
               </a>
             </div>
           </template>
           <template v-if="options.legacy">
             <img alt="LuckPerms logo" src="@/assets/logo.svg">
-            <h1>{{ $t('quiz.resultLegacy', { serverType }) }}</h1>
+            <h1>{{ $t('quiz.resultLegacy', {serverType}) }}</h1>
             <div class="options">
-              <a :href="downloads['bukkit-legacy']" v-if="options.bukkit" download>
+              <a v-if="options.bukkit" :href="downloads['bukkit-legacy']" download>
                 {{ $t('links.download') }}
               </a>
             </div>
           </template>
           <template v-if="options.unsupported">
-            <h1 v-if="!options.bungee">{{ $t('quiz.outdated', { serverType }) }}</h1>
+            <h1 v-if="!options.bungee">{{ $t('quiz.outdated', {serverType}) }}</h1>
             <h1 v-if="options.bungee">{{ $t('quiz.travertine') }}</h1>
           </template>
         </div>
       </transition>
 
-      <transition name="fade" mode="out-in">
+      <transition mode="out-in" name="fade">
         <div v-if="page === 5" class="page page-5">
-          <h1>{{ $t('quiz.version', { serverType }) }}</h1>
-          <ul class="options" v-if="options.bungee">
-            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', { version: '1.8.8' }) }}</li>
-            <li @click="proceed(4, 'unsupported')">{{ $t('quiz.older', { version: '1.8.7' }) }}</li>
+          <h1>{{ $t('quiz.version', {serverType}) }}</h1>
+          <ul v-if="options.bungee" class="options">
+            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', {version: '1.8.8'}) }}</li>
+            <li @click="proceed(4, 'unsupported')">{{ $t('quiz.older', {version: '1.8.7'}) }}</li>
           </ul>
-          <ul class="options" v-if="options.velocity">
-            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', { version: '1.0' }) }}</li>
+          <ul v-if="options.velocity" class="options">
+            <li @click="proceed(4, 'latest')">{{ $t('quiz.newer', {version: '1.0'}) }}</li>
           </ul>
         </div>
       </transition>
@@ -165,94 +165,94 @@ export default {
 </script>
 
 <style lang="scss">
-  .download-quiz {
-    background: rgba(0, 0, 0, .9);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.download-quiz {
+  background: rgba(0, 0, 0, .9);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .modal {
-      background: $bg-gradient-dark;
-      padding: 4rem;
-      border-radius: 4px;
-      width: 100%;
-      max-width: 48rem;
-      height: 100%;
-      max-height: 32rem;
-      overflow: hidden;
-      position: relative;
+  .modal {
+    background: $bg-gradient-dark;
+    padding: 4rem;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 48rem;
+    height: 100%;
+    max-height: 32rem;
+    overflow: hidden;
+    position: relative;
 
-      .close-button {
-        position: absolute;
-        bottom: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        background: transparent;
-        border: 0;
-        font: inherit;
-        color: white;
-        opacity: .5;
-        text-transform: uppercase;
-        cursor: pointer;
-        padding: 1rem;
+    .close-button {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: transparent;
+      border: 0;
+      font: inherit;
+      color: white;
+      opacity: .5;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 1rem;
 
-        &:hover {
-          opacity: 1;
-        }
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      width: calc(100% - 8rem);
+      height: calc(100% - 8rem);
+      overflow: auto;
+
+      img {
+        width: 8rem;
+        height: 8rem;
+        margin-bottom: 1rem;
       }
 
-      .page {
+      h1 {
+        margin: 0 0 1rem;
+        text-align: center;
+      }
+
+      .options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        position: absolute;
-        width: calc(100% - 8rem);
-        height: calc(100% - 8rem);
-        overflow: auto;
+        width: 100%;
 
-        img {
-          width: 8rem;
-          height: 8rem;
-          margin-bottom: 1rem;
-        }
-
-        h1 {
-          margin: 0 0 1rem;
+        li, a {
+          background: $brand-color;
+          color: $navy;
+          font-weight: bold;
+          margin: 1rem;
+          padding: .5rem 1rem;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 1.5rem;
           text-align: center;
-        }
+          text-decoration: none;
 
-        .options {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-
-          li, a {
-            background: $brand-color;
-            color: $navy;
-            font-weight: bold;
-            margin: 1rem;
-            padding: .5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            text-align: center;
-            text-decoration: none;
-
-            &:hover {
-              background: lighten($brand-color, 10%);
-            }
+          &:hover {
+            background: lighten($brand-color, 10%);
           }
         }
       }
     }
   }
+}
 </style>
