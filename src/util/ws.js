@@ -1,4 +1,4 @@
-import { decode, encode } from 'base64-arraybuffer';
+import {decode, encode} from 'base64-arraybuffer';
 import Bowser from 'bowser';
 
 const config = require('../../config');

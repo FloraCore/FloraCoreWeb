@@ -1,7 +1,7 @@
 {
-  "bytebin_url": "https://usercontent.luckperms.net/",
-  "bytesocks_host": "usersockets.luckperms.net",
+  "bytebin_url": "https://bytebin.floracore.cc/",
+  "bytesocks_host": "bytesocks.floracore.cc",
   "base": "/",
   "selfHosted": false,
-  "api_url": "https://metadata.luckperms.net"
+  "api_url": "https://data.floracore.cc"
 }

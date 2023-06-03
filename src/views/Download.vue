@@ -320,7 +320,7 @@
 </template>
 
 <script>
-import { relativeDate } from '@/util/date';
+import {relativeDate} from '@/util/date';
 
 export default {
   name: 'Download',

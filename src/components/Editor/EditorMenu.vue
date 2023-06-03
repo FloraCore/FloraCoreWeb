@@ -121,7 +121,7 @@
 </template>
 
 <script>
-import { gte } from 'semver';
+import {gte} from 'semver';
 import Avatar from '../Avatar.vue';
 import EditorMenuTrack from './EditorMenuTrack.vue';
 import EditorMenuGroup from './EditorMenuGroup.vue';

@@ -155,7 +155,7 @@
 <script>
 import Datepicker from '@turbotailz/vuejs-datepicker';
 import vClickOutside from 'v-click-outside';
-import { relativeDate } from '@/util/date';
+import {relativeDate} from '@/util/date';
 
 export default {
   name: 'Node',
