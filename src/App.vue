@@ -43,7 +43,7 @@
         </li>
         <template v-if="!config.selfHosted">
           <li class="external overlap">
-            <a class="github" href="https://github.com/LuckPerms/LuckPerms" target="_blank">
+            <a class="github" href="https://github.com/FloraCore/FloraCore" target="_blank">
               <font-awesome :icon="['fab', 'github']" fixed-width/>
               <span>GitHub</span>
             </a>
