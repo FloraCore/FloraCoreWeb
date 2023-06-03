@@ -5,7 +5,7 @@
         <div :class="{'logo': true, 'selfhosted': config.selfHosted }">
           <img alt="LuckPerms logo" src="../assets/logo.svg">
           <div>
-            <h1>LuckPerms</h1>
+            <h1>FloraCore</h1>
             <p>{{ $t('description') }}</p>
           </div>
         </div>

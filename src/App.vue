@@ -3,18 +3,9 @@
     <nav id="nav">
       <div>
         <router-link class="logo" to="/">
-          <img alt="LuckPerms logo" src="@/assets/logo.svg">
-          <span>LuckPerms</span>
+          <img alt="FloraCore logo" src="@/assets/logo.svg">
+          <span>FloraCore</span>
         </router-link>
-        <transition name="fade">
-          <div v-if="!config.selfHosted && !isSponsorRoute" class="nav-message">
-            <router-link to="/sponsor">
-              <hr/>
-              <img alt="Bisect Hosting" src="@/assets/bisect.svg">
-              <span v-html="$t('sponsor')"/>
-            </router-link>
-          </div>
-        </transition>
       </div>
 
       <ul :class="{ active: menu, 'top-level': true }">
@@ -24,20 +15,6 @@
             {{ $t('links.home') }}
           </router-link>
         </li>
-        <template v-if="!config.selfHosted">
-          <li>
-            <router-link to="/download">
-              <font-awesome fixed-width icon="arrow-alt-circle-down"/>
-              {{ $t('links.download') }}
-            </router-link>
-          </li>
-          <li class="overlap">
-            <router-link to="/wiki">
-              <font-awesome fixed-width icon="book"/>
-              {{ $t('wiki') }}
-            </router-link>
-          </li>
-        </template>
         <li>
           <span :class="{ 'router-link-active': isToolsRoute, tools: true }">
             <font-awesome fixed-width icon="tools"/>
@@ -69,12 +46,6 @@
             <a class="github" href="https://github.com/LuckPerms/LuckPerms" target="_blank">
               <font-awesome :icon="['fab', 'github']" fixed-width/>
               <span>GitHub</span>
-            </a>
-          </li>
-          <li class="external">
-            <a class="discord" href="https://discord.gg/luckperms" target="_blank">
-              <font-awesome :icon="['fab', 'discord']" fixed-width/>
-              <span>Discord</span>
             </a>
           </li>
         </template>
@@ -117,43 +88,21 @@
     <transition mode="out-in" name="fade">
       <router-view/>
     </transition>
-
-    <footer>
-      <div class="footer">
-        <ul>
-          <li>
-            <font-awesome fixed-width icon="code-branch"/>
-            <a href="https://github.com/LuckPerms/LuckPermsWeb" target="_blank">LuckPermsWeb</a>
-            @
-            <a :href="'https://github.com/LuckPerms/LuckPermsWeb/commit/' + commitHash"
-               target="_blank">{{ commitHash }}</a>
-          </li>
-          <li>
-            <router-link v-if="!config.selfHosted" target="_blank" to="/wiki/Credits">
-              Copyright © 2017-{{ new Date().getFullYear().toString() }} LuckPerms contributors
-            </router-link>
-            <a v-else href="https://luckperms.net/wiki/Credits" target="_blank">
-              Copyright © 2017-{{ new Date().getFullYear().toString() }} LuckPerms contributors
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
   </div>
 </template>
 
 <script>
 export default {
   metaInfo: {
-    titleTemplate: '%s | LuckPerms',
+    titleTemplate: '%s | FloraCore',
     meta: [
       {
         property: 'og:title',
-        content: 'LuckPerms',
+        content: 'FloraCore',
       },
       {
         property: 'og:description',
-        content: 'Website & online apps for the LuckPerms plugin.',
+        content: 'Website & online apps for the FloraCore plugin.',
       },
       {
         property: 'og:type',
@@ -161,15 +110,15 @@ export default {
       },
       {
         property: 'og:image',
-        content: 'https://luckperms.net/logo.png',
+        content: 'https://floracore.cc/logo.png',
       },
       {
         property: 'og:url',
-        content: 'https://luckperms.net/',
+        content: 'https://floracore.cc/',
       },
       {
         property: 'og:site_name',
-        content: 'LuckPerms - A permissions plugin for Minecraft servers.',
+        content: 'FloraCore - 一个基于Minecraft(Bukkit/BungeeCord)的开源基础插件',
       },
     ],
   },
