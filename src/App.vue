@@ -503,7 +503,7 @@ body {
         }
 
         .locale-label {
-          padding: 0rem .75rem;
+          padding: 0 .75rem;
 
           @include breakpoint($sm) {
             display: none;
