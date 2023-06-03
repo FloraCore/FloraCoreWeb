@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import store from '@/store';
-import en from '../messages/en.json';
+import en from '../messages/zh.json';
 
 Vue.use(VueI18n);
 

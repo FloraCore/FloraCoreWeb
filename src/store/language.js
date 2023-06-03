@@ -49,7 +49,7 @@ export default {
       const navigatorLanguages = [navigator.language, ...(navigator.languages || [])];
       const supportedLanguages = state.supportedLanguages?.map(({ code }) => code) || [];
 
-      let language = 'en';
+      let language = 'zh';
 
       const userDefaultLanguage = navigatorLanguages
         .find((code) => {
@@ -74,10 +74,10 @@ export default {
       commit('setUserLocale', language);
     },
     async fetchLanguages({ commit, dispatch }) {
-      const { data: { languages } } = await axios.get('https://metadata.luckperms.net/data/translations');
+      const { data: { languages } } = await axios.get('https://data.floracore.cc/data/translations');
 
-      languages.en = {
-        code: 'en', name: 'English', localeTag: 'en_GB', progressWeb: 100,
+      languages.zh = {
+        code: 'zh', name: 'Chinese Simplified', localeTag: 'zh_CN', progressWeb: 100,
       };
 
       const languageFilter = (lang) => {
@@ -128,7 +128,7 @@ export default {
         return;
       }
 
-      const { data } = await axios.get(`https://metadata.luckperms.net/translation/web/${locale}`);
+      const { data } = await axios.get(`https://data.floracore.cc/translation/web/${locale}`);
 
       VueI18n.locale = locale;
       VueI18n.setLocaleMessage(locale, data);
