@@ -1,175 +1,26 @@
 {
   "description": "一个基于Minecraft(Bukkit/BungeeCord)的开源基础插件",
-  "close": "Close",
-  "copy": "Copy",
-  "wiki": "Wiki",
-  "wikiLocaleWarning": "Note: the wiki is only available in English.",
-  "localeUpdate": "New! Use the LuckPerms website in your preferred language. See our Discord for more info.",
-  "avatar": "{name}'s avatar",
-  "sponsor": "Proudly sponsored by <strong>BisectHosting</strong>.<br/>Create your own Minecraft server today!",
   "links": {
     "home": "主页",
     "download": "下载",
     "tools": {
       "name": "工具与应用",
-      "editor": "Editor",
-      "verbose": "聊天查看器",
-      "tree": "Tree"
+      "verbose": "聊天查看器"
     },
     "language": "语言"
   },
   "home": {
     "name": "主页"
   },
-  "editor": {
-    "description": "Web Permissions Editor",
-    "start": "To start a new editor session, use one of the following commands:",
-    "loading": "Loading data...",
-    "permissions": "Permissions",
-    "key": "Key",
-    "value": "Value",
-    "expiry": "Expiry",
-    "contexts": "Contexts",
-    "search": "Search",
-    "add": "Add",
-    "copy": "Copy",
-    "move": "Move",
-    "replace": "Replace",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "update": "Update",
-    "save": "Save",
-    "apply": "Apply",
-    "saveAndGenerate": "Save and generate code",
-    "saving": "Saving...",
-    "saved": "Data was saved!",
-    "command": "Run this command on your server to apply the changes:",
-    "copied": "Command copied to clipboard",
-    "clipboardCopy": "Copy to clipboard",
-    "clearFilters": "Clear filter",
-    "noResults": "No results found",
-    "applyNote": "<strong>Note:</strong> after running the <code>applyedits</code> command, you should generate another editor URL to continue editing your server's permissions.",
-    "nav": {
-      "tracks": "Tracks",
-      "groups": "Groups",
-      "users": "Users"
-    },
-    "reusedsession": {
-      "title": "Reused Session",
-      "desc": "This session has been used (opened & saved) already!",
-      "desc2": "Therefore, it may contain outdated data that no longer reflects the plugin storage. The recommended course of action is to create a new editor session and start afresh."
-    },
-    "trust": {
-      "title": "Editor Connection",
-      "prompt": "In order to trust this web browser and allow it to apply changes directly to your server, please run the following command in-game:",
-      "note": "<strong>Note:</strong> You only have to do this once! The server will remember this browser for future sessions."
-    },
-    "groups": {
-      "create": "Create a group",
-      "name": "Group name",
-      "choose": "Choose a group or user from the side bar",
-      "toggle": "Show/hide groups",
-      "delete": "Are you sure you want to delete group: <code>{group}</code>",
-      "deleteConfirm": "All {count} of its permissions will be deleted. This currently can not be undone.",
-      "displayName": "Display name",
-      "parent": "Parent",
-      "weight": "Weight",
-      "prefix": "Prefix",
-      "suffix": "Suffix",
-      "add": "Add group",
-      "edit": "Edit group",
-      "none": "None"
-    },
-    "users": {
-      "delete": "Are you sure you want to delete user: {user}",
-      "deleteConfirm": "All {count} of its permissions will be deleted. This currently can not be undone.",
-      "edit": "Edit user",
-      "toggleUsers": "Show/hide users"
-    },
-    "nodes": {
-      "add": "Add node",
-      "update": "Update nodes",
-      "permissionsCount": "Permission nodes <span>({count})</span>",
-      "addPermissions": "Add permissions",
-      "addContext": "Add context",
-      "addContexts": "Add contexts",
-      "deselect": "Deselect all nodes",
-      "select": "Select node for mass operations",
-      "selectAll": "Select node for mass operations",
-      "replace": "Replace contexts instead of adding?",
-      "edit": "Click to edit the permission",
-      "toggle": "Click to toggle true/false",
-      "expiry": "Click to choose an expiry",
-      "never": "never",
-      "deleteExpiry": "Delete expiry",
-      "contexts": "Click to edit the contexts for this node",
-      "enter": "Enter permissions or paste many",
-      "enterToSelect": "Press enter to select",
-      "contextsCount": "Contexts <span>({count})</span>",
-      "selected": "<span>{count}</span> selected node | <span>{count}</span> selected nodes",
-      "copy": "Copy {count} node to... | Copy {count} nodes to...",
-      "move": "Move {count} node to... | Move {count} nodes to...",
-      "delete": "Delete {count} node? | Delete {count} nodes?",
-      "deleteConfirm": "Are you sure you want to delete {count} permission node? | Are you sure you want to delete {count} permission nodes?",
-      "selection": {
-        "true": "Change all values to TRUE",
-        "false": "Change all values to FALSE",
-        "keep": "Keep values unchanged"
-      },
-      "sort": {
-        "permission": "Sort nodes by permission",
-        "value": "Sort nodes by true/false",
-        "expiry": "Sort nodes by expiry",
-        "contexts": "Sort nodes by contexts"
-      }
-    },
-    "tracks": {
-      "create": "Create a track",
-      "groups": "Groups",
-      "tip": "Tip: click and drag to re-order the track",
-      "addGroups": "Add groups",
-      "edit": "Edit track",
-      "name": "Track name",
-      "add": "Add track",
-      "save": "Save track",
-      "delete": "Delete track",
-      "filter": "Filter tracks, groups and users",
-      "toggle": "Show/hide tracks",
-      "toggleGroups": "Show/hide track groups"
-    },
-    "meta": {
-      "add": "Add a group to {id}",
-      "parents": "Parent groups",
-      "weight": "Weight: ",
-      "gotoParent": "Go to the {parent} group",
-      "removeParent": "Remove {parent} as a parent"
-    },
-    "error": {
-      "title": "Loading error",
-      "info": "Either the URL was copied wrong or the session has expired.",
-      "new": "Please generate another editor session with {command}."
-    },
-    "unsupported": {
-      "title": "Unsupported version",
-      "info": "Please {download} the latest version of LuckPerms to use the Web Editor",
-      "download": "download"
-    }
+  "loading": "加载数据...",
+  "error": {
+    "title": "加载出错",
+    "info": "URL 复制错误或会话已过期。",
+    "new": "请使用 {command} 生成新会话。"
   },
-  "tree": {
-    "title": "Permission Tree Viewer",
-    "generate": "To generate a permission tree, do the following in game or from the console:",
-    "uploaded": "Uploaded by",
-    "user": "Reference user",
-    "time": "Time",
-    "started": "When the recording started",
-    "expand": "Expand",
-    "collapse": "Collapse",
-    "home": {
-      "generate": "To generate a permission tree, do the following in game or from the console:",
-      "scope": "scope",
-      "player": "player",
-      "url": "Follow the URL that is generated"
-    }
+  "unsupported": {
+    "title": "不支持的版本",
+    "info": "请 {download} 最新版本的 FloraCore 以使用网页编辑器"
   },
   "verbose": {
     "title": "聊天查看器",
@@ -189,22 +40,8 @@
   "tools": {
     "demo": "查看演示"
   },
-  "quiz": {
-    "choose": "Do you run a single server, or a network?",
-    "single": "Single server",
-    "network": "Network of servers",
-    "type": "What type of server are you running?",
-    "note": "Note: LuckPerms is still required on all backend servers.",
-    "version": "What version of {serverType} are you running?",
-    "older": "{version} or older",
-    "newer": "{version} or newer",
-    "result": "You need LuckPerms for {serverType}",
-    "resultLegacy": "You need LuckPerms Legacy for {serverType}",
-    "travertine": "Your version of BungeeCord is not supported, consider switching to Travertine if you want to use LuckPerms.",
-    "outdated": "Your version of {serverType} is not supported, you must upgrade if you want to use LuckPerms."
-  },
   "notFound": {
-    "title": "Not found!",
-    "message": "The page {path} doesn't exist"
+    "title": "找不到内容！",
+    "message": "页面 {path} 不存在"
   }
 }

@@ -63,9 +63,9 @@
           <p>{{ $t('verbose.title') }}</p>
           <div v-if="verboseData.status === 3" class="error">
             <template v-if="errors.load">
-              <h3>{{ $t('editor.error.title') }}</h3>
-              <p>{{ $t('editor.error.info') }}</p>
-              <i18n path="editor.error.new" tag="p">
+              <h3>{{ $t('error.title') }}</h3>
+              <p>{{ $t('error.info') }}</p>
+              <i18n path="error.new" tag="p">
                 <template #command>
                   <code>/fc chat</code>
                 </template>
@@ -73,20 +73,15 @@
             </template>
 
             <template v-if="errors.unsupported">
-              <h3>{{ $t('editor.unsupported.title') }}</h3>
-              <i18n path="editor.unsupported.info" tag="p">
-                <template #download>
-                  <router-link to="/download">
-                    {{ $t('editor.unsupported.download') }}
-                  </router-link>
-                </template>
+              <h3>{{ $t('unsupported.title') }}</h3>
+              <i18n path="unsupported.info" tag="p">
               </i18n>
             </template>
           </div>
           <template v-if="verboseData.status === 1">
             <p>
               <font-awesome :spin="true" icon="asterisk"/>
-              {{ $t('editor.loading') }}
+              {{ $t('loading') }}
             </p>
           </template>
           <template v-if="verboseData.status === 0">
