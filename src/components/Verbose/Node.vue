@@ -5,8 +5,8 @@
         {{ source.type }}
       </span>
 
-      <span class="permission">
-        <code>{{ source.permission || `meta: ${source.key}` }}</code>
+      <span class="details">
+        <code>{{ source.details || `meta: ${source.key}` }}</code>
       </span>
 
       <span :class="source.result" class="value">
@@ -136,7 +136,7 @@ export default {
       }
     }
 
-    .permission {
+    .details {
       flex: 1;
     }
 

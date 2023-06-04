@@ -13,17 +13,14 @@
   },
   "data": [
     {
-      "who": {
-        "identifier": "internal/console"
-      },
       "type": "all",
+      "details": "Lobby-1",
       "queryMode": "contextual",
       "context": [],
       "trace": [
         "... and 1 more"
       ],
       "thread": "pool-8-thread-1",
-      "permission": "luckperms.user.info",
       "result": "undefined",
       "origin": "platform_permission_check"
     }
