@@ -131,7 +131,7 @@ export default {
       return this.$store.getters.verbose;
     },
     filteredNodes() {
-      const {data} = this.verboseData;
+      const { data } = this.verboseData;
       if (!this.filter && this.excludedResults.length === 0) return data;
       const filter = this.filter.toLowerCase();
       return data.filter(node => (

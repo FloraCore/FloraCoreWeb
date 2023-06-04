@@ -4,7 +4,7 @@ import Locale from 'locale-codes';
 // Need to import this dynamically otherwise it becomes a circular dependency and will throw errors
 const i18n = import('@/util/language');
 
-function sortByName({name: aName = ''}, {name: bName = ''}) {
+function sortByName({ name: aName = '' }, { name: bName = '' }) {
   return aName.localeCompare(bName);
 }
 
@@ -16,8 +16,8 @@ export default {
   }),
   getters: {
     userLocale: (state) => {
-      const {userLocale} = state;
-      return state.supportedLanguages.find(({code}) => code === userLocale);
+      const { userLocale } = state;
+      return state.supportedLanguages.find(({ code }) => code === userLocale);
     },
     supportedLanguages: state => state.supportedLanguages.sort(sortByName),
   },
@@ -33,7 +33,7 @@ export default {
     },
   },
   actions: {
-    async setUserLocale({state, commit, dispatch}, locale) {
+    async setUserLocale({ state, commit, dispatch }, locale) {
       if (locale) {
         dispatch('fetchLanguage', locale);
         commit('setUserLocale', locale);
@@ -47,7 +47,7 @@ export default {
       }
 
       const navigatorLanguages = [navigator.language, ...(navigator.languages || [])];
-      const supportedLanguages = state.supportedLanguages?.map(({code}) => code) || [];
+      const supportedLanguages = state.supportedLanguages?.map(({ code }) => code) || [];
 
       let language = 'zh';
 
@@ -57,7 +57,7 @@ export default {
             return true;
           }
 
-          const {'iso639-1': iso639v1} = Locale.getByTag(code);
+          const { 'iso639-1': iso639v1 } = Locale.getByTag(code);
 
           return supportedLanguages.includes(iso639v1);
         });
@@ -73,8 +73,8 @@ export default {
       dispatch('fetchLanguage', language);
       commit('setUserLocale', language);
     },
-    async fetchLanguages({commit, dispatch}) {
-      const {data: {languages}} = await axios.get('https://data.floracore.cc/data/translations');
+    async fetchLanguages({ commit, dispatch }) {
+      const { data: { languages } } = await axios.get('https://data.floracore.cc/data/translations');
 
       languages.zh = {
         code: 'zh', name: 'Chinese Simplified', localeTag: 'zh_CN', progressWeb: 100,
@@ -91,7 +91,7 @@ export default {
       };
 
       const languageMap = (code) => {
-        const {name, localeTag} = languages[code];
+        const { name, localeTag } = languages[code];
 
         let [, countryCode] = localeTag.split('_');
         countryCode = countryCode.toLowerCase();
@@ -123,12 +123,12 @@ export default {
     async fetchLanguage(_, locale) {
       const VueI18n = (await i18n).default;
 
-      if (locale === 'en') {
+      if (locale === 'zh') {
         VueI18n.locale = locale;
         return;
       }
 
-      const {data} = await axios.get(`https://data.floracore.cc/translation/web/${locale}`);
+      const { data } = await axios.get(`https://data.floracore.cc/translations/web/${locale}`);
 
       VueI18n.locale = locale;
       VueI18n.setLocaleMessage(locale, data);

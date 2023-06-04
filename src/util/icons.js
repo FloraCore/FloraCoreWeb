@@ -1,5 +1,5 @@
-import {library} from '@fortawesome/fontawesome-svg-core';
-import {FontAwesomeIcon, FontAwesomeLayers} from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon, FontAwesomeLayers } from '@fortawesome/vue-fontawesome';
 import {
   faArrowAltCircleDown,
   faArrowCircleRight,
@@ -37,7 +37,7 @@ import {
   faTools,
   faUndo,
 } from '@fortawesome/free-solid-svg-icons';
-import {faDiscord, faGithub, faPatreon,} from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faGithub, faPatreon } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   faSave,
