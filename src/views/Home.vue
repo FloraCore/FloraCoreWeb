@@ -28,22 +28,6 @@
 
     <div v-else class="container selfhosted">
       <section class="resources">
-        <div>
-          <div class="tools">
-            <router-link alt="Web Editor" to="/editor">
-              <font-awesome icon="edit"/>
-              {{ $t('links.editor') }}
-            </router-link>
-            <router-link alt="Verbose Viewer" to="/verbose">
-              <font-awesome icon="comment-alt"/>
-              {{ $t('links.verbose') }}
-            </router-link>
-            <router-link alt="Tree Viewer" to="/treeview">
-              <font-awesome icon="sitemap"/>
-              {{ $t('links.tree') }}
-            </router-link>
-          </div>
-        </div>
       </section>
     </div>
 
@@ -63,17 +47,8 @@ export default {
     return {};
   },
   computed: {
-    version() {
-      return this.$store.getters.version;
-    },
     config() {
       return this.$store.getters.config;
-    },
-    discordUserCount() {
-      return this.$store.getters.discordUserCount;
-    },
-    patreonCount() {
-      return this.$store.getters.patreonCount;
     },
   },
 };
