@@ -21,7 +21,7 @@
               <td :title="$t('verbose.time')">
                 {{ $t('verbose.time') }}
               </td>
-              <td>{{ verboseData.metadata.startTime }}</td>
+              <td>{{ verboseData.metadata.time }}</td>
             </tr>
             <tr>
               <td :title="$t('verbose.values')">
@@ -116,7 +116,7 @@ import updateSession from '@/util/session';
 
 export default {
   metaInfo: {
-    title: 'Verbose',
+    title: '聊天查看',
   },
   components: {
     Avatar,

@@ -1,20 +1,15 @@
 <template>
   <div class="node">
     <div class="main" @click="open = !open">
-      <span class="name">
-        <avatar
-          v-if="source.who.uuid && source.who.uuid !== '00000000-0000-0000-0000-000000000000'"
-          :id="source.who.uuid"
-          :name="source.who.identifier"
-          :title="false"
-        />
-        {{ source.who.identifier }}
+      <span :class="source.type" class="type">
+        {{ source.type }}
       </span>
+
       <span class="permission">
         <code>{{ source.permission || `meta: ${source.key}` }}</code>
       </span>
+
       <span :class="source.result" class="value">
-        <code :class="source.result">{{ source.result }}</code>
         <font-awesome :icon="valueIcon" fixed-width/>
       </span>
     </div>
@@ -114,7 +109,7 @@ export default {
       }
     }
 
-    .name {
+    .type {
       margin-right: 1rem;
       display: flex;
       align-items: center;
@@ -123,6 +118,21 @@ export default {
       img {
         width: 1rem;
         margin-right: .5rem;
+      }
+      &.all{
+        color: WHITE;
+      }
+      &.party{
+        color: #5865F2;
+      }
+      &.staff{
+        color: cyan;
+      }
+      &.guild{
+        color: green;
+      }
+      &.admin{
+        color: tomato;
       }
     }
 
