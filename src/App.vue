@@ -131,17 +131,11 @@ export default {
   },
 
   computed: {
-    commitHash() {
-      return process.env.VUE_APP_GIT_HASH;
-    },
     locale() {
       return this.$store.getters.userLocale;
     },
     locales() {
       return this.$store.getters.supportedLanguages;
-    },
-    version() {
-      return this.$store.getters.version;
     },
     config() {
       return this.$store.getters.config;
@@ -155,9 +149,6 @@ export default {
         'tree',
         'tree-home',
       ].includes(this.$route.name);
-    },
-    isSponsorRoute() {
-      return this.$route.name === 'sponsor';
     },
   },
 

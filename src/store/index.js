@@ -4,7 +4,7 @@ import axios from 'axios';
 import createPersistedState from 'vuex-persistedstate';
 import language from './language';
 import axiosCompress from '@/util/axios_compress';
-import {sendChangesViaSocket, socketConnect} from '@/util/ws';
+import { sendChangesViaSocket, socketConnect } from '@/util/ws';
 
 const uuid = require('uuid/v4');
 const config = require('../../config.json');
@@ -21,32 +21,7 @@ export default new Vuex.Store({
   },
   plugins: [persistedState],
   state: {
-    version: null,
-    versionTimestamp: null,
-    changeLog: [],
     config: null,
-    downloads: {
-      bukkit: null,
-      'bukkit-legacy': null,
-      bungee: null,
-      nukkit: null,
-      sponge: null,
-      velocity: null,
-      fabric: null,
-    },
-    extensions: {
-      'extension-legacy-api': null,
-      'extension-default-assignments': null,
-    },
-    additionalPlugins: {
-      extracontexts: null,
-    },
-    placeholderExpansions: {
-      'luckperms-mvdw-hook': null,
-      'luckperms-papi-expansion': null,
-    },
-    discordUserCount: null,
-    patreonCount: null,
     editor: {
       sessionId: null,
       socket: null,
@@ -78,25 +53,7 @@ export default new Vuex.Store({
 
 
   getters: {
-    version: state => state.version,
-
-    versionTimestamp: state => state.versionTimestamp,
-
-    changeLog: state => state.changeLog,
-
     config: state => state.config,
-
-    downloads: state => state.downloads,
-
-    extensions: state => state.extensions,
-
-    additionalPlugins: state => state.additionalPlugins,
-
-    placeholderExpansions: state => state.placeholderExpansions,
-
-    discordUserCount: state => state.discordUserCount,
-
-    patreonCount: state => state.patreonCount,
 
     editorSessionId: state => state.editor.sessionId,
 
@@ -129,7 +86,7 @@ export default new Vuex.Store({
     selectedNodeIds: state => state.editor.selectedNodes,
 
     // eslint-disable-next-line max-len
-    selectedNodes: (state, getters) => getters.selectedNodeIds.map(nodeId => getters.allNodes.find(({id}) => nodeId === id)),
+    selectedNodes: (state, getters) => getters.selectedNodeIds.map(nodeId => getters.allNodes.find(({ id }) => nodeId === id)),
 
     potentialContexts: state => state.editor.potentialContexts,
 
@@ -146,44 +103,8 @@ export default new Vuex.Store({
 
 
   mutations: {
-    setVersion: (state, version) => {
-      state.version = version;
-    },
-
-    setVersionTimestamp: (state, versionTimestamp) => {
-      state.versionTimestamp = versionTimestamp;
-    },
-
-    setChangeLog: (state, changeLog) => {
-      state.changeLog = changeLog;
-    },
-
     setConfig: (state, configData) => {
       state.config = configData;
-    },
-
-    setDownloads: (state, downloads) => {
-      state.downloads = downloads;
-    },
-
-    setExtensions: (state, extensions) => {
-      state.extensions = extensions;
-    },
-
-    setAdditionalPlugins: (state, additionalPlugins) => {
-      state.additionalPlugins = additionalPlugins;
-    },
-
-    setPlaceholderExpansions: (state, placeholderExpansions) => {
-      state.placeholderExpansions = placeholderExpansions;
-    },
-
-    setDiscordUserCount: (state, discordUserCount) => {
-      state.discordUserCount = discordUserCount;
-    },
-
-    setPatreonCount: (state, patreonCount) => {
-      state.patreonCount = patreonCount;
     },
 
     initEditorData(state, sessionId) {
@@ -242,7 +163,7 @@ export default new Vuex.Store({
       state.editor.tracks.push(track);
     },
 
-    updateTrack(state, {id, newTrack}) {
+    updateTrack(state, { id, newTrack }) {
       const updatedTrack = state.editor.tracks.find(track => track.id === id);
 
       updatedTrack.groups = newTrack.groups;
@@ -260,7 +181,7 @@ export default new Vuex.Store({
     },
 
     deleteSession(state, sessionId) {
-      const {type} = state.editor.sessions[sessionId];
+      const { type } = state.editor.sessions[sessionId];
       const sessionListIndex = state.editor.sessionList.findIndex(group => group === sessionId);
 
       state.editor.sessionList.splice(sessionListIndex, 1);
@@ -314,7 +235,7 @@ export default new Vuex.Store({
       // state.editor.sessions[id] = ;
       state.editor.sessionList.push(id);
 
-      const {deletedGroups} = state.editor;
+      const { deletedGroups } = state.editor;
 
       if (deletedGroups.includes(id)) {
         deletedGroups.splice(deletedGroups.findIndex(groupId => groupId === id), 1);
@@ -349,7 +270,7 @@ export default new Vuex.Store({
       state.editor.currentSession = sessionId;
     },
 
-    setModal(state, {type, object}) {
+    setModal(state, { type, object }) {
       state.editor.modal.type = type || null;
       state.editor.modal.object = object || null;
     },
@@ -369,7 +290,7 @@ export default new Vuex.Store({
     },
 
     /* eslint-disable no-param-reassign */
-    updateNode(state, {node, type, data}) {
+    updateNode(state, { node, type, data }) {
       if (type === 'expiry') {
         node[type] = data.value ? data.value.getTime() : null;
       } else {
@@ -383,7 +304,7 @@ export default new Vuex.Store({
       state.editor.sessions[node.sessionId].modified = true;
     },
 
-    bulkUpdateNode(state, {node, payload}) {
+    bulkUpdateNode(state, { node, payload }) {
       const {
         value,
         expiry,
@@ -402,7 +323,7 @@ export default new Vuex.Store({
       if (replace) {
         node.context = contexts;
       } else {
-        const contextList = {...node.context, ...contexts};
+        const contextList = { ...node.context, ...contexts };
         Object.keys(contextList).forEach((key) => {
           contextList[key] = [...new Set([...(node.context[key] || []), ...(contexts[key] || [])])];
         });
@@ -413,7 +334,7 @@ export default new Vuex.Store({
       state.editor.sessions[node.sessionId].modified = true;
     },
 
-    updateNodeContext(state, {node, data}) {
+    updateNodeContext(state, { node, data }) {
       node.context = data;
       node.modified = true;
       state.editor.sessions[node.sessionId].modified = true;
@@ -472,7 +393,7 @@ export default new Vuex.Store({
       state.editor.save.key = key;
     },
 
-    setVerboseData(state, {data, status}) {
+    setVerboseData(state, { data, status }) {
       state.verbose.status = status;
 
       if (!data) {
@@ -516,29 +437,12 @@ export default new Vuex.Store({
 
 
   actions: {
-    getAppData: async ({commit, dispatch}) => {
+    getAppData: async ({ commit, dispatch }) => {
       commit('setConfig', config);
-      try {
-        const appData = await axios.get(`${config.api_url}/data/all`);
-        commit('setVersion', appData.data.version);
-        commit('setVersionTimestamp', appData.data.versionTimestamp);
-        commit('setChangeLog', appData.data.changeLog);
-        commit('setDownloads', appData.data.downloads);
-        commit('setExtensions', appData.data.extensions);
-        commit('setAdditionalPlugins', appData.data.additionalPlugins);
-        commit('setPlaceholderExpansions', appData.data.placeholderExpansions);
-        commit('setDiscordUserCount', appData.data.discordUserCount);
-        commit('setPatreonCount', appData.data.patreonCount);
-      } catch (error) {
-        console.error('Error getting data, trying again in 10 seconds...');
-        setTimeout(async () => {
-          await dispatch('getAppData');
-        }, 10000);
-      }
     },
 
     // eslint-disable-next-line object-curly-newline
-    async getEditorData({commit, getters, dispatch}, sessionId) {
+    async getEditorData({ commit, getters, dispatch }, sessionId) {
       commit('setLoadError', false);
       commit('setUnsupportedError', false);
 
@@ -561,12 +465,12 @@ export default new Vuex.Store({
 
       try {
         if (sessionId === 'demo') {
-          const {default: data} = await import('../data/editor-demo.json');
+          const { default: data } = await import('../data/editor-demo.json');
           await dispatch('setEditorData', data);
           return;
         }
 
-        const {data} = await axios.get(`${config.bytebin_url}${sessionId}`);
+        const { data } = await axios.get(`${config.bytebin_url}${sessionId}`);
 
         if (data.socket?.channelId) {
           socketConnect(
@@ -574,14 +478,14 @@ export default new Vuex.Store({
             sessionId,
             data.socket.publicKey,
             {
-              connect: ({socket}) => {
+              connect: ({ socket }) => {
                 commit('setEditorSocket', socket);
                 commit('setEditorSocketStatus', true);
               },
-              trust: ({nonce}) => {
+              trust: ({ nonce }) => {
                 commit('setModal', {
                   type: 'trustPrompt',
-                  object: {nonce},
+                  object: { nonce },
                 });
               },
               trusted: () => {
@@ -616,7 +520,7 @@ export default new Vuex.Store({
       }
     },
 
-    setEditorData({commit, dispatch}, data) {
+    setEditorData({ commit, dispatch }, data) {
       commit('setMetaData', data.metadata);
 
       data.permissionHolders.forEach((session) => {
@@ -640,11 +544,11 @@ export default new Vuex.Store({
       commit('setTracks', data.tracks);
     },
 
-    addKnownPermission({commit}, permission) {
+    addKnownPermission({ commit }, permission) {
       commit('addKnownPermission', permission);
     },
 
-    addNodes({commit}, nodes) {
+    addNodes({ commit }, nodes) {
       nodes.forEach((node) => {
         const addingNode = node;
         addingNode.id = uuid();
@@ -655,11 +559,11 @@ export default new Vuex.Store({
       });
     },
 
-    changeCurrentSession({commit}, session) {
+    changeCurrentSession({ commit }, session) {
       commit('setCurrentSession', session);
     },
 
-    addGroup({commit, dispatch}, group) {
+    addGroup({ commit, dispatch }, group) {
       const session = {
         id: group.name,
         displayName: group.displayName || group.name,
@@ -719,31 +623,31 @@ export default new Vuex.Store({
 
       commit('addEditorSession', session);
       commit('setCurrentSession', session.id);
-      commit('setModal', {type: null, object: null});
+      commit('setModal', { type: null, object: null });
     },
 
-    addTrack({commit}, track) {
+    addTrack({ commit }, track) {
       commit('addTrack', track);
-      commit('setModal', {type: null, object: null});
+      commit('setModal', { type: null, object: null });
     },
 
-    updateTrack({commit}, {id, newTrack}) {
+    updateTrack({ commit }, { id, newTrack }) {
       if (id === newTrack.id) {
-        commit('updateTrack', {id, newTrack});
+        commit('updateTrack', { id, newTrack });
       } else {
         commit('deleteTrack', id);
         commit('addTrack', newTrack);
       }
 
-      commit('setModal', {type: null, object: null});
+      commit('setModal', { type: null, object: null });
     },
 
-    deleteTrack({commit}, trackId) {
+    deleteTrack({ commit }, trackId) {
       commit('deleteTrack', trackId);
     },
 
-    copyNodes({getters, dispatch, commit}, sessions) {
-      const {selectedNodes} = getters;
+    copyNodes({ getters, dispatch, commit }, sessions) {
+      const { selectedNodes } = getters;
 
       selectedNodes.forEach((node) => {
         const nodeCopies = [];
@@ -764,8 +668,8 @@ export default new Vuex.Store({
     },
 
     // eslint-disable-next-line no-unused-vars
-    moveNodes({state, getters, commit}, session) {
-      const {selectedNodes} = getters;
+    moveNodes({ state, getters, commit }, session) {
+      const { selectedNodes } = getters;
 
       selectedNodes.forEach((node) => {
         commit('updateNode', {
@@ -781,7 +685,7 @@ export default new Vuex.Store({
       commit('closeModal');
     },
 
-    deleteNodes({getters, commit}) {
+    deleteNodes({ getters, commit }) {
       const selectedNodes = getters.selectedNodeIds.map(node => node);
 
       selectedNodes.forEach((nodeId) => {
@@ -791,11 +695,11 @@ export default new Vuex.Store({
       commit('closeModal');
     },
 
-    updateNodes({getters, commit}, payload) {
-      const {selectedNodes} = getters;
+    updateNodes({ getters, commit }, payload) {
+      const { selectedNodes } = getters;
 
       selectedNodes.forEach((node) => {
-        commit('bulkUpdateNode', {node, payload});
+        commit('bulkUpdateNode', { node, payload });
       });
     },
 
@@ -820,8 +724,8 @@ export default new Vuex.Store({
         sessionNodes.forEach(node => nodes.push({
           key: node.key,
           value: node.value,
-          ...node.expiry && {expiry: Math.floor(node.expiry / 1000)},
-          ...(Object.entries(node.context).length) && {context: node.context},
+          ...node.expiry && { expiry: Math.floor(node.expiry / 1000) },
+          ...(Object.entries(node.context).length) && { context: node.context },
         }));
 
         payload.changes.push({
@@ -841,8 +745,8 @@ export default new Vuex.Store({
 
       axios.post(`${config.bytebin_url}post`, payload, axiosCompress)
         .then((response) => {
-          const {key} = response.data;
-          const {socket} = state.editor;
+          const { key } = response.data;
+          const { socket } = state.editor;
 
           sendChangesViaSocket(socket, key)
             .then((newSessionId) => {
@@ -864,7 +768,7 @@ export default new Vuex.Store({
         .catch(console.error);
     },
 
-    async getVerboseData({commit}, sessionId) {
+    async getVerboseData({ commit }, sessionId) {
       commit('setVerboseLoadError', false);
       commit('setVerboseUnsupportedError', false);
 
@@ -877,34 +781,34 @@ export default new Vuex.Store({
 
       if (['?', '#'].includes(firstChar)) {
         commit('setVerboseUnsupportedError');
-        commit('setVerboseData', {data: null, status: 3});
+        commit('setVerboseData', { data: null, status: 3 });
         throw new Error('Unsupported version');
       }
 
       try {
-        commit('setVerboseData', {data: null, status: 0});
+        commit('setVerboseData', { data: null, status: 0 });
         if (sessionId === 'demo') {
-          commit('setVerboseData', {data: null, status: 1});
-          const {default: data} = await import('../data/verbose-demo.json');
-          commit('setVerboseData', {data, status: 2});
+          commit('setVerboseData', { data: null, status: 1 });
+          const { default: data } = await import('../data/verbose-demo.json');
+          commit('setVerboseData', { data, status: 2 });
         } else {
-          commit('setVerboseData', {data: null, status: 1});
+          commit('setVerboseData', { data: null, status: 1 });
           const response = await axios.get(`${config.bytebin_url}${sessionId}`);
           const data = {
             ...response.data,
             sessionId,
           };
-          commit('setVerboseData', {data, status: 2});
+          commit('setVerboseData', { data, status: 2 });
         }
       } catch (error) {
         console.error(`${error.message} - session ID: ${sessionId}`);
         commit('setVerboseLoadError');
-        commit('setVerboseData', {data: null, status: 3});
+        commit('setVerboseData', { data: null, status: 3 });
         throw new Error('Loading error');
       }
     },
 
-    async getTreeData({commit}, sessionId) {
+    async getTreeData({ commit }, sessionId) {
       commit('setTreeLoadError', false);
       commit('setTreeUnsupportedError', false);
 
@@ -922,7 +826,7 @@ export default new Vuex.Store({
 
       try {
         if (sessionId === 'demo') {
-          const {default: data} = await import('../data/tree-demo.json');
+          const { default: data } = await import('../data/tree-demo.json');
           commit('setTreeData', data);
           return;
         }
