@@ -3,7 +3,7 @@
     <section class="hero">
       <div class="container">
         <div :class="{'logo': true, 'selfhosted': config.selfHosted }">
-          <img alt="LuckPerms logo" src="../assets/logo.svg">
+          <img alt="FloraCore logo" src="../assets/logo.svg">
           <div>
             <h1>FloraCore</h1>
             <p>{{ $t('description') }}</p>
@@ -52,10 +52,10 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: '主页',
 
   metaInfo: {
-    title: 'LuckPerms',
+    title: 'FloraCore',
     titleTemplate: null,
   },
 
