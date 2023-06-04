@@ -18,22 +18,10 @@
               </td>
             </tr>
             <tr>
-              <td :title="$t('verbose.started')">
-                {{ $t('verbose.start') }}
+              <td :title="$t('verbose.time')">
+                {{ $t('verbose.time') }}
               </td>
               <td>{{ verboseData.metadata.startTime }}</td>
-            </tr>
-            <tr>
-              <td :title="$t('verbose.ended')">
-                {{ $t('verbose.end') }}
-              </td>
-              <td>{{ verboseData.metadata.endTime }}</td>
-            </tr>
-            <tr>
-              <td :title="$t('verbose.recording')">
-                {{ $t('verbose.duration') }}
-              </td>
-              <td>{{ verboseData.metadata.duration }}</td>
             </tr>
             <tr>
               <td :title="$t('verbose.values')">
@@ -41,14 +29,6 @@
               </td>
               <td>
                 {{ filteredNodeCount }} / {{ verboseData.metadata.count.total }}
-              </td>
-            </tr>
-            <tr>
-              <td :title="$t('verbose.filterDesc')">
-                {{ $t('verbose.filter') }}
-              </td>
-              <td>
-                <code>{{ verboseData.metadata.filter }}</code>
               </td>
             </tr>
             <tr>
@@ -62,25 +42,6 @@
               </td>
             </tr>
           </table>
-        </div>
-        <div class="filter">
-          <label for="filter">{{ $t('verbose.filter') }}</label>
-          <input
-            id="filter"
-            v-model="filter"
-            :placeholder="$t('verbose.filterPlaceholder')"
-            type="text"
-          >
-          <div
-            v-for="value in ['true', 'false', 'undefined']" :key="value"
-            :class="['exclude-result', { selected: isExcluded(value) }]"
-            @click="excludeResult(value)"
-          >
-            <span></span>
-            <p>
-              {{ $t('verbose.exclude') }} <code :class="value">{{ value }}</code>
-            </p>
-          </div>
         </div>
       </div>
       <div class="col-2">
