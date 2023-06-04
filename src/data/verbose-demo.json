@@ -15,14 +15,9 @@
     {
       "type": "all",
       "details": "Lobby-1",
-      "queryMode": "contextual",
-      "context": [],
-      "trace": [
+      "content": [
         "... and 1 more"
-      ],
-      "thread": "pool-8-thread-1",
-      "result": "undefined",
-      "origin": "platform_permission_check"
+      ]
     }
   ]
 }
