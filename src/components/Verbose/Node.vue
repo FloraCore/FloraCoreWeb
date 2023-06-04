@@ -82,20 +82,37 @@ export default {
         width: 1rem;
         margin-right: .5rem;
       }
-      &.server{
+
+      &.server {
         color: WHITE;
       }
-      &.party{
-        color: #5865F2;
+
+      &.party {
+        color: #5555ff;
       }
-      &.staff{
+
+      &.staff {
         color: cyan;
       }
-      &.guild{
+
+      &.guild {
         color: green;
       }
-      &.admin{
-        color: tomato;
+
+      &.admin {
+        color: #ff5555;
+      }
+
+      &.builder {
+        color: #00aaaa;
+      }
+
+      &.custom {
+        color: #ffff55;
+      }
+
+      &.friend {
+        color: #ff55ff;
       }
     }
 
