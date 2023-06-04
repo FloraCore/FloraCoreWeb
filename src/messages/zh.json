@@ -10,90 +10,16 @@
   "links": {
     "home": "主页",
     "download": "下载",
-    "editor": "Web Editor",
-    "verbose": "Verbose Viewer",
-    "tree": "Tree Viewer",
-    "wiki": "Wiki",
     "tools": {
       "name": "工具与应用",
       "editor": "Editor",
-      "verbose": "Verbose",
+      "verbose": "聊天查看器",
       "tree": "Tree"
     },
     "language": "语言"
   },
   "home": {
-    "name": "主页",
-    "supported": "Supports Bukkit/Spigot/Paper, BungeeCord, Sponge, Fabric, Forge, Nukkit and Velocity servers",
-    "why": {
-      "title": "Why LuckPerms?",
-      "description": "LuckPerms is a permissions plugin for Minecraft servers. It allows server admins to control what features players can use by creating groups and assigning permissions.",
-      "its": "It is:",
-      "fast": "<b>fast</b> - written with performance and scalability in mind.",
-      "reliable": "<b>reliable</b> - trusted by thousands of server admins, and the largest of server networks.",
-      "easy": "<b>easy to use</b> - setup permissions using commands, directly in config files, or using the web editor.",
-      "flexible": "<b>flexible</b> - supports a variety of data storage options, and works on lots of different server types.",
-      "extensive": "<b>extensive</b> - a plethora of customization options and settings which can be changed to suit your server.",
-      "free": "<b>free</b> - available for download and usage at no cost, and permissively licensed so it can remain free forever.",
-      "more": "For more information, see the wiki article on {wiki}",
-      "why": "Why LuckPerms?"
-    },
-    "apps": {
-      "title": "Web Apps",
-      "description1": "This site hosts a number of extra web applications which work with the plugin.",
-      "description2": "These applications are designed to work for all users, even those without the ability to install/host an application on their own web server."
-    },
-    "wiki": "Learn how to install, setup, configure and effectively use LuckPerms",
-    "github": "Browse the source code, report issues and contribute to the project",
-    "discord": "Join {count} others to discuss the project and ask/answer questions",
-    "patreon": "Join {count} others supporting the project on Patreon",
-    "partner": {
-      "title": "Create your own Minecraft Server",
-      "description": "Easily create your very own Minecraft Server with our hosting partner, Bisect Hosting!"
-    }
-  },
-  "download": {
-    "title": "Download LuckPerms",
-    "build": "Latest, built {time}",
-    "typeHelp": "Not sure which type?",
-    "typeChoose": "Choose your server type",
-    "bukkit": "Spigot, Paper etc. (1.8.8 to 1.19.x)",
-    "bungee": "BungeeCord, Waterfall etc. (latest only)",
-    "sponge": "Sponge (API 8)",
-    "fabric": "Fabric (1.19.4)",
-    "forge": "Forge (44.1.0+, 1.19.4)",
-    "nukkit": "NukkitX (b93 or newer)",
-    "velocity": "Velocity (3.x)",
-    "bukkitLegacy": "Spigot, Paper etc. (1.7.10 only)",
-    "changelog": "Recent Changelog",
-    "install": {
-      "title": "How to install",
-      "add": "Add the downloaded plugin <code>.jar</code> file into your server's <code>plugins</code> or <code>mods</code> folder.",
-      "restart": "Start or restart your server - <strong>do not reload!</strong>",
-      "config": "Locate the plugin's configuration file (usually found within <code>/plugins/LuckPerms/</code>) and adjust any settings to your liking.",
-      "setup": "Start setting up your permissions! Check out the {wiki} guide for more info.",
-      "wiki": "Getting Started"
-    },
-    "trouble": {
-      "title": "Having trouble installing?",
-      "console": "Make sure to check your console for any error messages - especially during start up",
-      "read": "Check the more detailed {wiki} wiki page to see if you need to perform any additional steps.",
-      "wiki": "Installation",
-      "support": "If all else fails, get in touch with us on {discord} and we'll be happy to help."
-    },
-    "extensions": {
-      "title": "Extensions",
-      "description": "Extensions can modify the behaviour of LuckPerms, you can read more about them on {wiki}.",
-      "descriptionWiki": "the wiki",
-      "legacy": "Legacy API Extension",
-      "legacyInfo": "Allows some common API methods to be used by plugins that haven't upgraded to v5 version of the API yet.",
-      "more": "Check out the {wiki} for more information!",
-      "wiki": "wiki section",
-      "defaultAssignments": "Default Assignments Extension",
-      "defaultAssignmentsInfo": "Provides an alternate approach for assigning {wiki} if the recommended way is impractical.",
-      "groups": "default groups",
-      "version": "LuckPerms 5.0 and above"
-    }
+    "name": "主页"
   },
   "editor": {
     "description": "Web Permissions Editor",
@@ -246,7 +172,7 @@
     }
   },
   "verbose": {
-    "title": "Verbose viewer",
+    "title": "聊天查看器",
     "uploaded": "Uploaded by",
     "start": "Start time",
     "started": "When the recording started",
@@ -270,14 +196,14 @@
     "trace": "Trace",
     "exclude": "Exclude",
     "home": {
-      "generate": "To generate a verbose report, do the following in game or from the console:",
-      "performActions": "Perform a series of actions that require permissions",
-      "filter": "filter",
-      "url": "Follow the URL that is generated"
+      "generate": "要生成详细聊天报告，请在游戏中或从控制台执行以下操作：",
+      "performActions": "执行一系列需要权限的操作",
+      "player": "玩家名",
+      "url": "打开生成的 URL"
     }
   },
   "tools": {
-    "demo": "View Demo"
+    "demo": "查看演示"
   },
   "quiz": {
     "choose": "Do you run a single server, or a network?",

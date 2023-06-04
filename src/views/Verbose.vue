@@ -96,9 +96,9 @@
     </div>
     <div v-else class="tool-intro">
       <div>
-        <img alt="LuckPerms logo" src="../assets/logo.svg">
+        <img alt="FloraCore logo" src="../assets/logo.svg">
         <div class="text">
-          <h1>LuckPerms</h1>
+          <h1>FloraCore</h1>
           <p>{{ $t('verbose.title') }}</p>
           <div v-if="verboseData.status === 3" class="error">
             <template v-if="errors.load">
@@ -106,7 +106,7 @@
               <p>{{ $t('editor.error.info') }}</p>
               <i18n path="editor.error.new" tag="p">
                 <template #command>
-                  <code>/lp editor</code>
+                  <code>/fc chat</code>
                 </template>
               </i18n>
             </template>
@@ -136,9 +136,8 @@
             </router-link>
             <p>{{ $t('verbose.home.generate') }}</p>
             <ul>
-              <li><code>/lp verbose record [{{ $t('verbose.home.filter') }}]</code></li>
+              <li><code>/fc chat [{{ $t('verbose.home.player') }}]</code></li>
               <li>{{ $t('verbose.home.performActions') }}</li>
-              <li><code>/lp verbose paste</code></li>
               <li>{{ $t('verbose.home.url') }}</li>
             </ul>
           </template>
