@@ -25,6 +25,7 @@
   "verbose": {
     "title": "聊天查看器",
     "uploaded": "上传者",
+    "target": "目标玩家",
     "time": "上传时间",
     "count": "统计",
     "values": "在这次检查中这名玩家一共有多少聊天记录",

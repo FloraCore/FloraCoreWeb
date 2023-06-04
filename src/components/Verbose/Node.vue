@@ -82,7 +82,7 @@ export default {
         width: 1rem;
         margin-right: .5rem;
       }
-      &.all{
+      &.server{
         color: WHITE;
       }
       &.party{

@@ -18,6 +18,12 @@
               </td>
             </tr>
             <tr>
+              <td :title="$t('verbose.target')">
+                {{ $t('verbose.target') }}
+              </td>
+              <td>{{ verboseData.metadata.target }}</td>
+            </tr>
+            <tr>
               <td :title="$t('verbose.time')">
                 {{ $t('verbose.time') }}
               </td>
