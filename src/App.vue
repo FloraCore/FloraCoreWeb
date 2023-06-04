@@ -22,21 +22,9 @@
           </span>
           <ul>
             <li>
-              <router-link to="/editor">
-                <font-awesome fixed-width icon="edit"/>
-                {{ $t('links.tools.editor') }}
-              </router-link>
-            </li>
-            <li>
               <router-link to="/verbose">
                 <font-awesome fixed-width icon="comment-alt"/>
                 {{ $t('links.tools.verbose') }}
-              </router-link>
-            </li>
-            <li>
-              <router-link to="/treeview">
-                <font-awesome fixed-width icon="sitemap"/>
-                {{ $t('links.tools.tree') }}
               </router-link>
             </li>
           </ul>
@@ -142,12 +130,8 @@ export default {
     },
     isToolsRoute() {
       return [
-        'editor',
-        'editor-home',
         'verbose',
         'verbose-home',
-        'tree',
-        'tree-home',
       ].includes(this.$route.name);
     },
   },

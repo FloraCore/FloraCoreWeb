@@ -19,16 +19,6 @@ let routes = [
     component: NotFound,
   },
   {
-    path: '/editor',
-    name: 'editor-home',
-    component: () => import(/* webpackChunkName: "editor" */ './views/Editor'),
-  },
-  {
-    path: '/editor/:id',
-    name: 'editor',
-    component: () => import(/* webpackChunkName: "editor" */ './views/Editor'),
-  },
-  {
     path: '/verbose',
     name: 'verbose-home',
     component: () => import(/* webpackChunkName: "verbose" */ './views/Verbose'),
@@ -37,16 +27,6 @@ let routes = [
     path: '/verbose/:id',
     name: 'verbose',
     component: () => import(/* webpackChunkName: "verbose" */ './views/Verbose'),
-  },
-  {
-    path: '/treeview',
-    name: 'tree-home',
-    component: () => import(/* webpackChunkName: "tree" */ './views/Tree'),
-  },
-  {
-    path: '/treeview/:id',
-    name: 'tree',
-    component: () => import(/* webpackChunkName: "tree" */ './views/Tree'),
   },
 ];
 
