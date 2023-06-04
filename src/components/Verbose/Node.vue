@@ -14,9 +14,8 @@
       </span>
     </div>
     <transition name="slide">
-      <div v-if="open" class="stack">
+      <div v-if="open" class="content">
         <div class="col-2">
-          {{ $t('verbose.content') }}
           <pre class="code">{{ source.content.join("\n") }}</pre>
         </div>
       </div>
@@ -129,7 +128,7 @@ export default {
       }
     }
 
-    .stack {
+    .content {
       background: rgba(0, 0, 0, .2);
       padding: .5rem 1rem;
       display: flex;

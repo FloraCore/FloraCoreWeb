@@ -179,7 +179,6 @@
     "values": "在这次检查中这名玩家一共有多少聊天记录",
     "truncated": "数据是否丢失",
     "truncatedDesc": "数据受上传大小截断",
-    "content": "内容",
     "home": {
       "generate": "要生成详细聊天报告，请在游戏中或从控制台执行以下操作：",
       "performActions": "执行一系列需要权限的操作",
